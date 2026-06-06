@@ -80,20 +80,38 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
+  const projectIndex = projects.findIndex((item) => item.slug === project.slug);
+  const nextProject = projects[projectIndex + 1];
+
   return (
     <div className="min-h-screen overflow-hidden">
       <SiteHeader />
 
       <main className="mx-auto w-full max-w-[1014px] px-5 pb-8 pt-8 sm:px-8">
-        <Link
-          href="/#projects"
-          className="reveal inline-flex items-center gap-2 text-sm font-extrabold text-[color:var(--accent-strong)] transition hover:text-[color:var(--text)]"
+        <nav
+          aria-label="Project navigation"
+          className="flex items-center justify-between gap-4"
         >
-          <ArrowLeftIcon />
-          Back to projects
-        </Link>
+          <Link
+            href="/#projects"
+            className="inline-flex items-center gap-2 text-sm font-extrabold text-[color:var(--accent-strong)] hover:text-[color:var(--text)]"
+          >
+            <ArrowLeftIcon />
+            Back to projects
+          </Link>
 
-        <section className="reveal mt-8 grid gap-8 lg:grid-cols-[1fr_320px]">
+          {nextProject ? (
+            <Link
+              href={`/projects/${nextProject.slug}`}
+              className="inline-flex items-center gap-2 text-right text-sm font-extrabold text-[color:var(--accent-strong)] hover:text-[color:var(--text)]"
+            >
+              Next project
+              <ArrowRightIcon />
+            </Link>
+          ) : null}
+        </nav>
+
+        <section className="mt-8 grid gap-8 lg:grid-cols-[1fr_320px]">
           <div>
             <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-[color:var(--accent-strong)]">
               {project.eyebrow}
@@ -124,14 +142,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   {project.video ? (
                     <a
                       href={project.video}
-                      className="chip rounded-md px-3 py-1.5 text-xs font-bold transition hover:text-[color:var(--text)]"
+                      className="chip rounded-md px-3 py-1.5 text-xs font-bold hover:text-[color:var(--text)]"
                     >
                       Demo video
                     </a>
                   ) : null}
                   <a
                     href={`mailto:${profile.email}`}
-                    className="chip rounded-md px-3 py-1.5 text-xs font-bold transition hover:text-[color:var(--text)]"
+                    className="chip rounded-md px-3 py-1.5 text-xs font-bold hover:text-[color:var(--text)]"
                   >
                     Ask about this
                   </a>
@@ -141,7 +159,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </aside>
         </section>
 
-        <section className="reveal reveal-delay-1 mt-8 overflow-hidden rounded-2xl border border-[color:var(--line)] bg-[color:var(--panel-strong)] shadow-[0_24px_70px_rgba(0,0,0,0.26)]">
+        <section className="mt-8 overflow-hidden rounded-2xl border border-[color:var(--line)] bg-[color:var(--panel-strong)] shadow-[0_24px_70px_rgba(0,0,0,0.26)]">
           {project.video ? (
             <video
               controls
@@ -164,7 +182,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </section>
 
         {project.video ? (
-          <section className="reveal reveal-delay-2 mt-5 overflow-hidden rounded-2xl border border-[color:var(--line)] bg-[color:var(--panel)] p-3 shadow-[0_18px_48px_rgba(0,0,0,0.2)]">
+          <section className="mt-5 overflow-hidden rounded-2xl border border-[color:var(--line)] bg-[color:var(--panel)] p-3 shadow-[0_18px_48px_rgba(0,0,0,0.2)]">
             <Image
               src={project.image.src}
               alt={project.image.alt}
@@ -176,7 +194,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         ) : null}
 
         <section className="mt-8 grid gap-4 md:grid-cols-2">
-          <article className="glass-card reveal rounded-2xl p-6">
+          <article className="glass-card rounded-2xl p-6">
             <h2 className="text-xl font-extrabold tracking-[-0.035em] text-[color:var(--text)]">
               Problem
             </h2>
@@ -184,7 +202,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               {project.problem}
             </p>
           </article>
-          <article className="glass-card reveal reveal-delay-1 rounded-2xl p-6">
+          <article className="glass-card rounded-2xl p-6">
             <h2 className="text-xl font-extrabold tracking-[-0.035em] text-[color:var(--text)]">
               Solution
             </h2>
@@ -194,8 +212,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </article>
         </section>
 
-        <section className="mt-4 grid gap-4 lg:grid-cols-[1.08fr_0.92fr]">
-          <article className="glass-card reveal rounded-2xl p-6">
+        <section className="mt-4 grid gap-4 md:grid-cols-2">
+          <article className="glass-card rounded-2xl p-6">
             <h2 className="text-xl font-extrabold tracking-[-0.035em] text-[color:var(--text)]">
               Architecture notes
             </h2>
@@ -209,7 +227,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </ul>
           </article>
 
-          <article className="glass-card reveal reveal-delay-1 rounded-2xl p-6">
+          <article className="glass-card rounded-2xl p-6">
             <h2 className="text-xl font-extrabold tracking-[-0.035em] text-[color:var(--text)]">
               Outcomes
             </h2>
@@ -224,7 +242,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </article>
         </section>
 
-        <section className="glass-card reveal mt-4 rounded-2xl p-6">
+        <section className="glass-card mt-4 rounded-2xl p-6">
           <h2 className="text-xl font-extrabold tracking-[-0.035em] text-[color:var(--text)]">
             Tech stack
           </h2>
@@ -235,24 +253,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               </span>
             ))}
           </div>
-        </section>
-
-        <section className="reveal mt-8 flex flex-col items-start justify-between gap-5 rounded-2xl border border-[color:var(--line)] bg-[linear-gradient(135deg,rgba(79,107,255,0.22),rgba(15,23,42,0.72))] p-6 sm:flex-row sm:items-center">
-          <div>
-            <h2 className="text-2xl font-extrabold tracking-[-0.04em] text-[color:var(--text)]">
-              Interested in the details?
-            </h2>
-            <p className="mt-2 text-sm leading-6 text-[color:var(--soft-text)]">
-              I can walk through the tradeoffs, implementation decisions, and what I would improve in a production version.
-            </p>
-          </div>
-          <a
-            href={`mailto:${profile.email}`}
-            className="inline-flex h-12 shrink-0 items-center justify-center gap-3 rounded-lg bg-[color:var(--accent)] px-6 text-sm font-extrabold text-white shadow-[0_18px_38px_rgba(79,107,255,0.28)] transition hover:-translate-y-0.5 hover:bg-[color:var(--accent-strong)]"
-          >
-            Get in touch
-            <ArrowRightIcon />
-          </a>
         </section>
       </main>
 

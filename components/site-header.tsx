@@ -19,11 +19,11 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 w-full max-w-[1014px] items-center justify-between px-5 sm:px-8">
         <Link
           href="/#home"
-          className="group flex items-center gap-3"
+          className="flex items-center gap-3"
           aria-label={`${profile.name} home`}
           onClick={() => setOpen(false)}
         >
-          <span className="grid size-9 place-items-center rounded-lg bg-[linear-gradient(135deg,#4f6bff,#3351d8)] text-sm font-extrabold text-white shadow-[0_12px_30px_rgba(79,107,255,0.35)] transition group-hover:-translate-y-0.5">
+          <span className="grid size-9 place-items-center rounded-lg bg-[linear-gradient(135deg,#4f6bff,#3351d8)] text-sm font-extrabold text-white shadow-[0_12px_30px_rgba(79,107,255,0.35)]">
             {profile.initials}
           </span>
           <span className="text-base font-bold tracking-[-0.02em] text-[color:var(--text)]">
@@ -37,7 +37,7 @@ export function SiteHeader() {
               <a
                 key={link.label}
                 href={link.href}
-                className="transition hover:text-[color:var(--text)]"
+                className="hover:text-[color:var(--text)]"
               >
                 {link.label}
               </a>
@@ -45,7 +45,7 @@ export function SiteHeader() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="transition hover:text-[color:var(--text)]"
+                className="hover:text-[color:var(--text)]"
               >
                 {link.label}
               </Link>
@@ -64,31 +64,37 @@ export function SiteHeader() {
           aria-expanded={open}
           onClick={() => setOpen((value) => !value)}
         >
-          <span className="relative h-3.5 w-5">
-            <span
-              className={`absolute left-0 top-0 h-0.5 w-5 rounded bg-current transition ${
-                open ? "translate-y-[7px] rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`absolute left-0 top-[7px] h-0.5 w-5 rounded bg-current transition ${
-                open ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`absolute left-0 top-[14px] h-0.5 w-5 rounded bg-current transition ${
-                open ? "-translate-y-[7px] -rotate-45" : ""
-              }`}
-            />
-          </span>
+          {open ? (
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              className="size-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            >
+              <path d="M6 6l12 12M18 6 6 18" />
+            </svg>
+          ) : (
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              className="size-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          )}
         </button>
       </div>
 
       <div
-        className={`mx-auto w-full max-w-[1014px] px-5 transition-all duration-300 md:hidden ${
-          open
-            ? "max-h-72 pb-5 opacity-100"
-            : "max-h-0 overflow-hidden pb-0 opacity-0"
+        className={`mx-auto w-full max-w-[1014px] px-5 md:hidden ${
+          open ? "block pb-5" : "hidden"
         }`}
       >
         <div className="rounded-2xl border border-[color:var(--line)] bg-[color:var(--panel)] p-3 shadow-[0_18px_40px_rgba(0,0,0,0.25)]">
@@ -99,7 +105,7 @@ export function SiteHeader() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-xl px-4 py-3 transition hover:bg-[color:var(--chip)] hover:text-[color:var(--text)]"
+                  className="rounded-xl px-4 py-3 hover:bg-[color:var(--chip)] hover:text-[color:var(--text)]"
                 >
                   {link.label}
                 </a>
@@ -108,7 +114,7 @@ export function SiteHeader() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-xl px-4 py-3 transition hover:bg-[color:var(--chip)] hover:text-[color:var(--text)]"
+                  className="rounded-xl px-4 py-3 hover:bg-[color:var(--chip)] hover:text-[color:var(--text)]"
                 >
                   {link.label}
                 </Link>

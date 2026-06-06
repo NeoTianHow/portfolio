@@ -16,7 +16,7 @@ function FooterIcon({
       aria-label={label}
       target={href.startsWith("http") ? "_blank" : undefined}
       rel={href.startsWith("http") ? "noreferrer" : undefined}
-      className="grid size-9 place-items-center rounded-full border border-[color:var(--line)] bg-[color:var(--panel-soft)] text-[color:var(--muted)] transition hover:-translate-y-0.5 hover:border-[color:var(--accent)] hover:text-[color:var(--text)]"
+      className="grid size-9 place-items-center rounded-full border border-[color:var(--line)] bg-[color:var(--panel-soft)] text-[color:var(--muted)] hover:border-[color:var(--accent)] hover:text-[color:var(--text)]"
     >
       {children}
     </a>

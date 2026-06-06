@@ -67,7 +67,7 @@ export const experiences: Experience[] = [
     company: "CrimsonLogic",
     logo: "CL",
     role: "Software Engineer",
-    period: "Jun 2025 - Present",
+    period: "Jun 2025",
     status: "Current",
     bullets: [
       "Developed truck appointment and capacity management modules for a Port Community System in Antwerp.",

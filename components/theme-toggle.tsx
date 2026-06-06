@@ -64,15 +64,13 @@ export function ThemeToggle() {
       type="button"
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
       onClick={toggleTheme}
-      className="group inline-flex items-center gap-3 rounded-full border border-[color:var(--line)] bg-[color:var(--panel-soft)] px-2.5 py-2 text-[color:var(--muted)] shadow-[0_10px_30px_rgba(0,0,0,0.18)] transition hover:border-[color:var(--line-strong)] hover:text-[color:var(--text)]"
+      className="inline-flex items-center gap-3 rounded-full border border-[color:var(--line)] bg-[color:var(--panel-soft)] px-2.5 py-2 text-[color:var(--muted)] shadow-[0_10px_30px_rgba(0,0,0,0.18)] hover:border-[color:var(--line-strong)] hover:text-[color:var(--text)]"
     >
       <span className="relative grid size-4 place-items-center overflow-hidden">
         <svg
           aria-hidden="true"
           viewBox="0 0 24 24"
-          className={`absolute size-4 transition duration-300 ${
-            theme === "dark" ? "rotate-0 opacity-100" : "-rotate-45 opacity-0"
-          }`}
+          className={`absolute size-4 ${theme === "dark" ? "block" : "hidden"}`}
           fill="none"
           stroke="currentColor"
           strokeWidth="1.8"
@@ -83,9 +81,7 @@ export function ThemeToggle() {
         <svg
           aria-hidden="true"
           viewBox="0 0 24 24"
-          className={`absolute size-4 transition duration-300 ${
-            theme === "light" ? "rotate-0 opacity-100" : "rotate-45 opacity-0"
-          }`}
+          className={`absolute size-4 ${theme === "light" ? "block" : "hidden"}`}
           fill="none"
           stroke="currentColor"
           strokeWidth="1.8"
@@ -95,8 +91,8 @@ export function ThemeToggle() {
       </span>
       <span className="relative h-4 w-8 rounded-full bg-[color:var(--chip)] p-0.5">
         <span
-          className={`block size-3 rounded-full bg-[color:var(--accent)] shadow-[0_0_16px_rgba(79,107,255,0.6)] transition-transform ${
-            theme === "light" ? "translate-x-4" : "translate-x-0"
+          className={`block size-3 rounded-full bg-[color:var(--accent)] shadow-[0_0_16px_rgba(79,107,255,0.6)] ${
+            theme === "light" ? "ml-4" : "ml-0"
           }`}
         />
       </span>

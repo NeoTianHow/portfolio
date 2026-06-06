@@ -103,46 +103,7 @@ button {
   color: var(--soft-text);
 }
 
-.reveal {
-  animation: reveal-up 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.reveal-delay-1 {
-  animation-delay: 90ms;
-}
-
-.reveal-delay-2 {
-  animation-delay: 170ms;
-}
-
-.reveal-delay-3 {
-  animation-delay: 250ms;
-}
-
 .dot-grid {
   background-image: radial-gradient(circle, rgba(148, 163, 184, 0.5) 1.2px, transparent 1.2px);
   background-size: 22px 22px;
-}
-
-@keyframes reveal-up {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 1ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 1ms !important;
-  }
 }
