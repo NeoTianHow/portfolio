@@ -28,9 +28,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-theme="dark"
+      data-theme="light"
       className={`${manrope.variable} ${jetBrainsMono.variable} h-full antialiased`}
-      style={{ colorScheme: "dark" }}
+      style={{ colorScheme: "light" }}
     >
       <body className="min-h-full">{children}</body>
     </html>

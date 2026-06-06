@@ -14,16 +14,7 @@ type ProjectPageProps = {
 
 function ArrowLeftIcon() {
   return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="size-4"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.9"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
       <path d="M19 12H5" />
       <path d="m11 6-6 6 6 6" />
     </svg>
@@ -32,16 +23,7 @@ function ArrowLeftIcon() {
 
 function ArrowRightIcon() {
   return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="size-4"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.9"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
       <path d="M5 12h14" />
       <path d="m13 6 6 6-6 6" />
     </svg>
@@ -87,70 +69,53 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <div className="min-h-screen overflow-hidden">
       <SiteHeader />
 
-      <main className="mx-auto w-full max-w-[1014px] px-5 pb-8 pt-8 sm:px-8">
-        <nav
-          aria-label="Project navigation"
-          className="flex items-center justify-between gap-4"
-        >
-          <Link
-            href="/#projects"
-            className="inline-flex items-center gap-2 text-sm font-extrabold text-[color:var(--accent-strong)] hover:text-[color:var(--text)]"
-          >
+      <main className="mx-auto w-full max-w-[1120px] px-5 pb-10 pt-8 sm:px-8">
+        <nav aria-label="Project navigation" className="flex items-center justify-between gap-4 text-sm font-black">
+          <Link href="/#projects" className="inline-flex items-center gap-2 text-[color:var(--accent)] hover:text-[color:var(--text)]">
             <ArrowLeftIcon />
             Back to projects
           </Link>
 
           {nextProject ? (
-            <Link
-              href={`/projects/${nextProject.slug}`}
-              className="inline-flex items-center gap-2 text-right text-sm font-extrabold text-[color:var(--accent-strong)] hover:text-[color:var(--text)]"
-            >
+            <Link href={`/projects/${nextProject.slug}`} className="inline-flex items-center gap-2 text-right text-[color:var(--accent)] hover:text-[color:var(--text)]">
               Next project
               <ArrowRightIcon />
             </Link>
           ) : null}
         </nav>
 
-        <section className="mt-8 grid gap-8 lg:grid-cols-[1fr_320px]">
+        <section className="mt-10 grid gap-8 border-b border-[color:var(--line-strong)] pb-10 lg:grid-cols-[1fr_320px]">
           <div>
-            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-[color:var(--accent-strong)]">
-              {project.eyebrow}
-            </p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-[-0.055em] text-[color:var(--text)] sm:text-6xl">
+            <p className="font-mono text-xs font-bold text-[color:var(--second)]">{project.eyebrow}</p>
+            <h1 className="mt-4 max-w-4xl text-5xl font-black leading-[1] tracking-[-0.04em] text-[color:var(--text)] sm:text-6xl">
               {project.title}
             </h1>
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-[color:var(--soft-text)]">
+            <p className="mt-6 max-w-3xl text-xl font-bold leading-8 text-[color:var(--soft-text)]">
               {project.summary}
             </p>
           </div>
 
-          <aside className="glass-card h-fit rounded-2xl p-5">
+          <aside className="h-fit bg-[color:var(--panel)] p-5 shadow-[0_8px_16px_rgba(21,24,26,0.05)]">
             <dl className="space-y-5 text-sm">
               <div>
-                <dt className="font-extrabold text-[color:var(--text)]">Timeline</dt>
-                <dd className="mt-1 text-[color:var(--muted)]">{project.period}</dd>
+                <dt className="font-black text-[color:var(--text)]">Timeline</dt>
+                <dd className="mt-1 font-medium text-[color:var(--muted)]">{project.period}</dd>
               </div>
               <div>
-                <dt className="font-extrabold text-[color:var(--text)]">Role</dt>
-                <dd className="mt-1 text-[color:var(--muted)]">
+                <dt className="font-black text-[color:var(--text)]">Role</dt>
+                <dd className="mt-1 font-medium text-[color:var(--muted)]">
                   Full-stack engineering, architecture, and validation
                 </dd>
               </div>
               <div>
-                <dt className="font-extrabold text-[color:var(--text)]">Links</dt>
-                <dd className="mt-2 flex flex-wrap gap-2">
+                <dt className="font-black text-[color:var(--text)]">Links</dt>
+                <dd className="mt-3 flex flex-wrap gap-2">
                   {project.video ? (
-                    <a
-                      href={project.video}
-                      className="chip rounded-md px-3 py-1.5 text-xs font-bold hover:text-[color:var(--text)]"
-                    >
+                    <a href={project.video} className="chip px-3 py-1.5 text-xs font-bold hover:text-[color:var(--text)]">
                       Demo video
                     </a>
                   ) : null}
-                  <a
-                    href={`mailto:${profile.email}`}
-                    className="chip rounded-md px-3 py-1.5 text-xs font-bold hover:text-[color:var(--text)]"
-                  >
+                  <a href={`mailto:${profile.email}`} className="chip px-3 py-1.5 text-xs font-bold hover:text-[color:var(--text)]">
                     Ask about this
                   </a>
                 </dd>
@@ -159,14 +124,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </aside>
         </section>
 
-        <section className="mt-8 overflow-hidden rounded-2xl border border-[color:var(--line)] bg-[color:var(--panel-strong)] shadow-[0_24px_70px_rgba(0,0,0,0.26)]">
+        <section className="mt-8 overflow-hidden bg-[color:var(--text)] p-2">
           {project.video ? (
-            <video
-              controls
-              preload="metadata"
-              poster={project.image.src}
-              className="aspect-video w-full bg-black object-cover"
-            >
+            <video controls preload="metadata" poster={project.image.src} className="aspect-video w-full bg-black object-cover">
               <source src={project.video} type="video/mp4" />
             </video>
           ) : (
@@ -182,59 +142,52 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </section>
 
         {project.video ? (
-          <section className="mt-5 overflow-hidden rounded-2xl border border-[color:var(--line)] bg-[color:var(--panel)] p-3 shadow-[0_18px_48px_rgba(0,0,0,0.2)]">
+          <section className="mt-5 bg-[color:var(--panel)] p-3 shadow-[0_8px_16px_rgba(21,24,26,0.05)]">
             <Image
               src={project.image.src}
               alt={project.image.alt}
               width={project.image.width}
               height={project.image.height}
-              className="w-full rounded-xl object-cover"
+              className="w-full object-cover"
             />
           </section>
         ) : null}
 
-        <section className="mt-8 grid gap-4 md:grid-cols-2">
-          <article className="glass-card rounded-2xl p-6">
-            <h2 className="text-xl font-extrabold tracking-[-0.035em] text-[color:var(--text)]">
-              Problem
-            </h2>
-            <p className="mt-3 text-sm leading-7 text-[color:var(--soft-text)]">
-              {project.problem}
-            </p>
-          </article>
-          <article className="glass-card rounded-2xl p-6">
-            <h2 className="text-xl font-extrabold tracking-[-0.035em] text-[color:var(--text)]">
-              Solution
-            </h2>
-            <p className="mt-3 text-sm leading-7 text-[color:var(--soft-text)]">
-              {project.solution}
-            </p>
-          </article>
+        <section className="mt-10 grid gap-px bg-[color:var(--line-strong)] md:grid-cols-2">
+          {[
+            ["Problem", project.problem],
+            ["Solution", project.solution],
+          ].map(([title, body]) => (
+            <article key={title} className="bg-[color:var(--panel-soft)] p-6">
+              <h2 className="text-xl font-black tracking-[-0.03em] text-[color:var(--text)]">{title}</h2>
+              <p className="mt-3 text-sm leading-7 text-[color:var(--soft-text)]">{body}</p>
+            </article>
+          ))}
         </section>
 
-        <section className="mt-4 grid gap-4 md:grid-cols-2">
-          <article className="glass-card rounded-2xl p-6">
-            <h2 className="text-xl font-extrabold tracking-[-0.035em] text-[color:var(--text)]">
+        <section className="mt-px grid gap-px bg-[color:var(--line-strong)] md:grid-cols-2">
+          <article className="bg-[color:var(--panel-soft)] p-6">
+            <h2 className="text-xl font-black tracking-[-0.03em] text-[color:var(--text)]">
               Architecture notes
             </h2>
             <ul className="mt-4 space-y-3 text-sm leading-7 text-[color:var(--soft-text)]">
               {project.architecture.map((item) => (
                 <li key={item} className="flex gap-3">
-                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-[color:var(--accent)]" />
+                  <span className="mt-3 h-px w-4 shrink-0 bg-[color:var(--accent)]" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </article>
 
-          <article className="glass-card rounded-2xl p-6">
-            <h2 className="text-xl font-extrabold tracking-[-0.035em] text-[color:var(--text)]">
+          <article className="bg-[color:var(--panel-soft)] p-6">
+            <h2 className="text-xl font-black tracking-[-0.03em] text-[color:var(--text)]">
               Outcomes
             </h2>
             <ul className="mt-4 space-y-3 text-sm leading-7 text-[color:var(--soft-text)]">
               {project.outcomes.map((item) => (
                 <li key={item} className="flex gap-3">
-                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-[color:var(--success)]" />
+                  <span className="mt-3 h-px w-4 shrink-0 bg-[color:var(--success)]" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -242,13 +195,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </article>
         </section>
 
-        <section className="glass-card mt-4 rounded-2xl p-6">
-          <h2 className="text-xl font-extrabold tracking-[-0.035em] text-[color:var(--text)]">
+        <section className="mt-px bg-[color:var(--panel-soft)] p-6">
+          <h2 className="text-xl font-black tracking-[-0.03em] text-[color:var(--text)]">
             Tech stack
           </h2>
           <div className="mt-4 flex flex-wrap gap-2">
             {project.tech.map((item) => (
-              <span key={item} className="chip rounded-md px-3 py-1.5 text-xs font-bold">
+              <span key={item} className="chip px-3 py-1.5 text-xs font-bold">
                 {item}
               </span>
             ))}
