@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Manrope, JetBrains_Mono } from "next/font/google";
+import { Host_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const hostGrotesk = Host_Grotesk({
+  variable: "--font-host-grotesk",
   subsets: ["latin"],
   display: "swap",
 });
@@ -29,10 +29,13 @@ export default function RootLayout({
     <html
       lang="en"
       data-theme="light"
-      className={`${manrope.variable} ${jetBrainsMono.variable} h-full antialiased`}
+      className={`${hostGrotesk.variable} ${jetBrainsMono.variable} h-full antialiased`}
       style={{ colorScheme: "light" }}
     >
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">{children}{/* impeccable-live-start */}
+<script src="http://localhost:8400/live.js"></script>
+{/* impeccable-live-end */}
+</body>
     </html>
   );
 }

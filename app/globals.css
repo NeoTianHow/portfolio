@@ -53,7 +53,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-manrope);
+  --font-sans: var(--font-host-grotesk);
   --font-mono: var(--font-jetbrains-mono);
 }
 
@@ -72,7 +72,7 @@ body {
     linear-gradient(90deg, rgba(21, 24, 26, 0.035) 1px, transparent 1px) 0 0 / 72px 72px,
     linear-gradient(180deg, var(--canvas), var(--canvas-soft));
   color: var(--foreground);
-  font-family: var(--font-manrope), sans-serif;
+  font-family: var(--font-host-grotesk), sans-serif;
 }
 
 body::before {
@@ -113,10 +113,6 @@ button {
 
 .section-rule {
   border-top: 1px solid var(--line-strong);
-}
-
-.angled-frame {
-  clip-path: polygon(0 0, 100% 0, 100% 91%, 84% 100%, 0 100%);
 }
 
 a:focus-visible,
