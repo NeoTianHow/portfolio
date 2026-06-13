@@ -46,6 +46,7 @@ next-env.d.ts
 .agents/
 .cursor/
 .impeccable/
+.claude/
 # impeccable-live-ignore-start
 .impeccable/hook.cache.json
 .impeccable/live/server.json

@@ -10,6 +10,23 @@ export type Experience = {
   tech: string[];
 };
 
+export type Honor = {
+  title: string;
+  kind?: string;
+};
+
+export type Education = {
+  school: string;
+  logo: string;
+  logoSrc?: string;
+  logoSize?: "sm" | "md";
+  qualification: string;
+  period: string;
+  badge?: string;
+  detail: string;
+  honors?: Honor[];
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -23,6 +40,7 @@ export type Project = {
     height: number;
   };
   video?: string;
+  github?: string;
   tech: string[];
   problem: string;
   solution: string;
@@ -108,6 +126,39 @@ export const experiences: Experience[] = [
   },
 ];
 
+export const education: Education[] = [
+  {
+    school: "Singapore Institute of Technology · University of Glasgow",
+    logo: "SIT",
+    logoSrc: "/crimsonlogic.webp",
+    qualification: "BSc (Hons) in Computing Science",
+    period: "2022 - 2025",
+    badge: "GPA 4.68/5",
+    detail:
+      "Joint honours degree covering data structures and algorithms, distributed and cloud computing, machine learning, and professional software development.",
+    honors: [
+      { title: "The Ngee Ann Kongsi Scholarship", kind: "Merit-based" },
+      { title: "SIT Hackrift 2023", kind: "Hackathon participant" },
+      { title: "SIT Hackrift 2022", kind: "Hackathon participant" },
+    ],
+  },
+  {
+    school: "Singapore Polytechnic",
+    logo: "SP",
+    logoSrc: "/crimsonlogic.webp",
+    qualification: "Diploma in Information Technology with Merit",
+    period: "2017 - 2020",
+    badge: "GPA 3.88/4",
+    detail:
+      "Foundation in software development, databases, and web technologies, including a final-year e-commerce build for KidZania Singapore as frontend lead.",
+    honors: [
+      { title: "School of Computing Director's Roll", kind: "Academic honor" },
+      { title: "Edusave Skills Award", kind: "Technical achievement" },
+      { title: "Student Facilitator, SEED SIG", kind: "Software Development" },
+    ],
+  },
+];
+
 export const projects: Project[] = [
   {
     slug: "psa-codeoptics",
@@ -123,6 +174,7 @@ export const projects: Project[] = [
       height: 1070,
     },
     video: "/capstone-demo.mp4",
+    github: "https://github.com/NeoTianHow/code-optics",
     tech: [
       "Angular",
       "Spring Boot",
@@ -161,6 +213,7 @@ export const projects: Project[] = [
       width: 2721,
       height: 1237,
     },
+    github: "https://github.com/NeoTianHow/ticket-vibe",
     tech: [
       "React",
       "Node.js",
@@ -189,7 +242,3 @@ export const projects: Project[] = [
     ],
   },
 ];
-
-export function getProject(slug: string) {
-  return projects.find((project) => project.slug === slug);
-}

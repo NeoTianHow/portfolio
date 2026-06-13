@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { experiences, profile, projects } from "@/lib/portfolio-data";
+import { ExperienceEducation } from "@/components/experience-education";
+import { profile, projects } from "@/lib/portfolio-data";
 
 const skillIconUrls: Record<string, string> = {
   Angular:
@@ -233,108 +233,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section
-          className="section-rule py-9"
-          aria-labelledby="experience-heading"
-        >
-          <div className="mb-6 flex items-end justify-between gap-4">
-            <div>
-              <h2
-                id="experience-heading"
-                className="text-3xl font-black tracking-[-0.035em] text-[color:var(--text)]"
-              >
-                Experience
-              </h2>
-            </div>
-            <a
-              href={profile.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="hidden items-center gap-2 text-sm font-black text-[color:var(--accent)] hover:text-[color:var(--text)] sm:inline-flex"
-            >
-              Full profile on LinkedIn
-              <ArrowRightIcon />
-            </a>
-          </div>
-
-          <div className="space-y-px bg-[color:var(--line-strong)]">
-            {experiences.map((experience) => (
-              <article
-                key={`${experience.company}-${experience.role}`}
-                className="bg-[color:var(--panel-soft)] p-5 sm:p-6"
-              >
-                <div className="flex items-start gap-4">
-                  {experience.logoSrc ? (
-                    <div className="mt-0.5 flex h-11 w-14 shrink-0 items-center justify-center overflow-hidden">
-                      <Image
-                        src={experience.logoSrc}
-                        alt={experience.company}
-                        width={56}
-                        height={44}
-                        unoptimized
-                        className={`w-auto max-w-[56px] object-contain${experience.logoSize === "sm" ? " h-8" : " h-11"}`}
-                      />
-                    </div>
-                  ) : (
-                    <div className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center bg-[color:var(--accent-soft)] font-mono text-xs font-black text-[color:var(--accent-strong)]">
-                      {experience.logo}
-                    </div>
-                  )}
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
-                      <h3 className="text-[22px] font-black leading-tight tracking-[-0.03em] text-[color:var(--text)]">
-                        {experience.company}
-                      </h3>
-                      {experience.status === "Current" && (
-                        <span className="inline-flex items-center rounded-full bg-[color:var(--accent-soft)] px-2 py-0.5 text-[11px] font-bold tracking-wide text-[color:var(--accent-strong)]">
-                          Now
-                        </span>
-                      )}
-                    </div>
-                    <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-sm">
-                      <p className="font-bold text-[color:var(--second)]">
-                        {experience.role}
-                      </p>
-                      <span className="select-none text-[color:var(--quiet)]">·</span>
-                      <p className="font-medium text-[color:var(--muted)]">
-                        {experience.status === "Current"
-                          ? `${experience.period} – Present`
-                          : experience.period}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <ul className="mt-4 grid gap-2 text-sm leading-6 text-[color:var(--soft-text)]">
-                  {experience.bullets.map((bullet) => (
-                    <li key={bullet} className="flex gap-3">
-                      <span className="mt-2 h-px w-4 shrink-0 bg-[color:var(--accent)]" />
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {experience.tech.map((item) => (
-                    <span
-                      key={item}
-                      className="chip px-2.5 py-1.5 text-xs font-bold"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-          <a
-            href={profile.linkedin}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-5 inline-flex items-center gap-2 text-sm font-black text-[color:var(--accent)] hover:text-[color:var(--text)] sm:hidden"
-          >
-            Full profile on LinkedIn
-            <ArrowRightIcon />
-          </a>
-        </section>
+        <ExperienceEducation />
 
         <section
           id="projects"
@@ -342,55 +241,76 @@ export default function Home() {
           aria-labelledby="projects-heading"
         >
           <div className="mb-6 flex items-end justify-between gap-4">
-            <div>
-              <h2
-                id="projects-heading"
-                className="text-3xl font-black tracking-[-0.035em] text-[color:var(--text)]"
-              >
-                Featured projects
-              </h2>
-            </div>
+            <h2
+              id="projects-heading"
+              className="text-3xl font-black tracking-[-0.035em] text-[color:var(--text)]"
+            >
+              Featured projects
+            </h2>
+            <a
+              href={profile.resume}
+              download
+              className="hidden items-center gap-2 text-sm font-black text-[color:var(--accent)] hover:text-[color:var(--text)] sm:inline-flex"
+            >
+              Download resume
+              <ArrowRightIcon />
+            </a>
           </div>
 
-          <div className="grid gap-5 lg:grid-cols-2">
-            {projects.map((project) => (
-              <Link
-                key={project.slug}
-                href={`/projects/${project.slug}`}
-                className="rule-card block overflow-hidden"
-              >
-                <div className="relative aspect-[16/9] overflow-hidden bg-[color:var(--chip)] p-3">
-                  <Image
-                    src={project.image.src}
-                    alt={project.image.alt}
-                    width={project.image.width}
-                    height={project.image.height}
-                    className="h-full w-full object-contain object-center"
-                  />
-                </div>
-                <div className="p-5 sm:p-6">
-                  <p className="font-mono text-xs font-bold text-[color:var(--second)]">
-                    {project.eyebrow}
-                  </p>
-                  <h3 className="mt-3 text-2xl font-black tracking-[-0.04em] text-[color:var(--text)]">
-                    {project.title}
-                  </h3>
-                  <p className="mt-3 max-w-[36rem] text-base leading-7 text-[color:var(--soft-text)]">
-                    {project.summary}
-                  </p>
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {project.tech.slice(0, 6).map((item) => (
-                      <span
-                        key={item}
-                        className="chip px-2.5 py-1.5 text-xs font-bold"
-                      >
-                        {item}
-                      </span>
-                    ))}
+          <div className="space-y-px bg-[color:var(--line-strong)]">
+            {projects.map((project) => {
+              const CardTag = project.github ? "a" : "div";
+              const cardProps = project.github
+                ? {
+                    href: project.github,
+                    target: "_blank" as const,
+                    rel: "noreferrer",
+                    "aria-label": `${project.title} — view on GitHub`,
+                  }
+                : {};
+              return (
+                <CardTag
+                  key={project.slug}
+                  {...cardProps}
+                  className="group block bg-[color:var(--panel-soft)] p-5 sm:p-6"
+                >
+                  <div className="flex gap-6 lg:gap-10">
+                    <div className="flex-1">
+                      <div>
+                        <h3 className="text-[22px] font-black leading-tight tracking-[-0.03em] text-[color:var(--text)]">
+                          {project.title}
+                        </h3>
+                        <p className="mt-0.5 text-xs font-medium text-[color:var(--muted)]">{project.period}</p>
+                      </div>
+                      <p className="mt-3 text-sm leading-7 text-[color:var(--soft-text)]">
+                        {project.summary}
+                      </p>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {project.tech.map((item) => (
+                          <span
+                            key={item}
+                            className="chip px-2.5 py-1.5 text-xs font-bold"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="hidden w-[220px] shrink-0 self-center lg:block">
+                      <div className="relative aspect-[16/9] overflow-hidden bg-[color:var(--canvas-soft)]">
+                        <Image
+                          src={project.image.src}
+                          alt={project.image.alt}
+                          width={project.image.width}
+                          height={project.image.height}
+                          className="h-full w-full object-contain p-3 opacity-75"
+                        />
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </CardTag>
+              );
+            })}
           </div>
         </section>
       </main>

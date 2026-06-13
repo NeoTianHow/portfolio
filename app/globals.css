@@ -115,6 +115,27 @@ button {
   border-top: 1px solid var(--line-strong);
 }
 
+.panel-swap {
+  animation: panel-fade 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes panel-fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel-swap {
+    animation: none;
+  }
+}
+
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--accent);
