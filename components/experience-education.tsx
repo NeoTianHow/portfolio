@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useId, useRef, useState } from "react";
+import { ArrowRightIcon } from "@/components/icons";
 import {
   education as educationData,
   experiences as experiencesData,
@@ -9,24 +10,6 @@ import {
   type Education,
   type Experience,
 } from "@/lib/portfolio-data";
-
-function ArrowRightIcon({ className = "size-4" }: { className?: string }) {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className={className}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.9"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M5 12h14" />
-      <path d="m13 6 6 6-6 6" />
-    </svg>
-  );
-}
 
 function LogoBlock({
   logo,

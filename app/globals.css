@@ -19,9 +19,6 @@
   --accent-strong: #004e56;
   --accent-soft: #dcecee;
   --second: #52666b;
-  --second-soft: #e6ecec;
-  --success: #006a73;
-  --success-soft: #dcecee;
   --header: rgba(247, 248, 245, 0.9);
 }
 
@@ -44,9 +41,6 @@
   --accent-strong: #8fdee4;
   --accent-soft: rgba(98, 200, 208, 0.14);
   --second: #b4c8ca;
-  --second-soft: rgba(180, 200, 202, 0.13);
-  --success: #62c8d0;
-  --success-soft: rgba(98, 200, 208, 0.14);
   --header: rgba(16, 19, 21, 0.9);
 }
 
@@ -99,11 +93,6 @@ button {
 .surface {
   background: var(--panel-soft);
   box-shadow: 0 8px 16px rgba(21, 24, 26, 0.05);
-}
-
-.rule-card {
-  border-top: 1px solid var(--line-strong);
-  background: linear-gradient(180deg, var(--panel), var(--panel-strong));
 }
 
 .chip {

@@ -32,10 +32,7 @@ export default function RootLayout({
       className={`${hostGrotesk.variable} ${jetBrainsMono.variable} h-full antialiased`}
       style={{ colorScheme: "light" }}
     >
-      <body className="min-h-full">{children}{/* impeccable-live-start */}
-<script src="http://localhost:8400/live.js"></script>
-{/* impeccable-live-end */}
-</body>
+      <body className="min-h-full">{children}</body>
     </html>
   );
 }

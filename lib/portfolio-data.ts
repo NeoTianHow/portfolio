@@ -30,7 +30,6 @@ export type Education = {
 export type Project = {
   slug: string;
   title: string;
-  eyebrow: string;
   period: string;
   summary: string;
   image: {
@@ -39,13 +38,8 @@ export type Project = {
     width: number;
     height: number;
   };
-  video?: string;
   github?: string;
   tech: string[];
-  problem: string;
-  solution: string;
-  architecture: string[];
-  outcomes: string[];
 };
 
 export const profile = {
@@ -64,23 +58,6 @@ export const profile = {
   availability: "Available for software engineering opportunities",
   personalLine: "Software Engineer from Singapore",
 };
-
-export const skills = [
-  "Java",
-  "Spring Boot",
-  "SQL",
-  "Python",
-  "JavaScript",
-  "React",
-  "Angular",
-  "TypeScript",
-  "Docker",
-  "AWS",
-  "Kubernetes",
-  "Kafka",
-  "Redis",
-  "MongoDB",
-];
 
 export const experiences: Experience[] = [
   {
@@ -163,7 +140,6 @@ export const projects: Project[] = [
   {
     slug: "psa-codeoptics",
     title: "PSA CodeOptics",
-    eyebrow: "AI engineering workflow platform",
     period: "Nov 2024 - Mar 2025",
     summary:
       "An AI-powered platform for GitLab repository visibility, branch context summaries, and automated merge-request reviews aligned with internal standards.",
@@ -173,7 +149,6 @@ export const projects: Project[] = [
       width: 2179,
       height: 1070,
     },
-    video: "/capstone-demo.mp4",
     github: "https://github.com/NeoTianHow/code-optics",
     tech: [
       "Angular",
@@ -185,25 +160,10 @@ export const projects: Project[] = [
       "H2",
       "JasperReports",
     ],
-    problem:
-      "Developers needed a faster way to understand branch activity, pull-request context, and code quality signals across many internal GitLab repositories.",
-    solution:
-      "Built a dashboard and AI review workflow that preprocesses code diffs, summarizes branch intent, reviews merge requests against internal rules, and captures feedback for refinement.",
-    architecture: [
-      "Angular frontend surfaces repository, branch, and merge-request insights in a compact dashboard.",
-      "Spring Boot services coordinate GitLab webhooks, branch analysis, report generation, and review orchestration.",
-      "LLM outputs are grounded with preprocessed diffs, commit messages, custom coding rules, and Chroma feedback embeddings.",
-    ],
-    outcomes: [
-      "Reduced manual branch tracking by giving teams real-time visibility into merged, unmerged, active, and stale branches.",
-      "Helped developers understand unfamiliar code changes faster with natural-language summaries.",
-      "Created a feedback loop that stores downvoted review comments to improve future AI review quality.",
-    ],
   },
   {
     slug: "microservice-ticketing",
     title: "Microservice Ticketing Solution",
-    eyebrow: "Cloud-native ticketing architecture",
     period: "Aug 2023 - Dec 2023",
     summary:
       "A distributed ticketing platform with virtual queueing, bot protection, real-time updates, and Kubernetes scaling for high-concurrency purchase flows.",
@@ -225,20 +185,6 @@ export const projects: Project[] = [
       "RabbitMQ",
       "WebSocket",
       "Cloudflare",
-    ],
-    problem:
-      "Ticketing systems can collapse under sudden demand, while scalping bots and denial-of-service traffic make fair access difficult to maintain.",
-    solution:
-      "Designed a containerized microservice platform with virtual queueing, rate limiting, CAPTCHA, Cloudflare protection, and real-time communication.",
-    architecture: [
-      "React clients communicate with Node.js services over REST and WebSocket channels.",
-      "Redis and RabbitMQ coordinate queueing, event flow, and high-concurrency state transitions.",
-      "Dockerized services run on Kubernetes with horizontal pod scaling based on demand.",
-    ],
-    outcomes: [
-      "Supported fairer purchase access through a virtual queue during traffic spikes.",
-      "Hardened the platform against scalping bots with rate limiting, CAPTCHA, and edge protection.",
-      "Validated scalability under stress testing with 10,000 simulated requests per minute.",
     ],
   },
 ];

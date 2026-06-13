@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { CopyrightYear } from "@/components/copyright-year";
 import { profile } from "@/lib/portfolio-data";
 
 function FooterIcon({
@@ -30,7 +31,7 @@ export function SiteFooter() {
       className="mx-auto flex w-full max-w-[1120px] flex-col gap-5 border-t border-[color:var(--line-strong)] px-5 pb-8 pt-6 text-sm text-[color:var(--muted)] sm:flex-row sm:items-center sm:justify-between sm:px-8"
     >
       <p className="font-medium">
-        (c) 2026 {profile.name.toLowerCase().replaceAll(" ", "")}.com
+        (c) <CopyrightYear /> {profile.name.toLowerCase().replaceAll(" ", "")}.com
       </p>
       <div className="flex items-center gap-3">
         <FooterIcon href={profile.linkedin} label="LinkedIn profile">
