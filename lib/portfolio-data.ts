@@ -1,6 +1,8 @@
 export type Experience = {
   company: string;
   logo: string;
+  logoSrc?: string;
+  logoSize?: "sm" | "md";
   role: string;
   period: string;
   status?: string;
@@ -66,6 +68,7 @@ export const experiences: Experience[] = [
   {
     company: "CrimsonLogic",
     logo: "CL",
+    logoSrc: "/crimsonlogic.webp",
     role: "Software Engineer",
     period: "Jun 2025",
     status: "Current",
@@ -79,6 +82,7 @@ export const experiences: Experience[] = [
   {
     company: "PSA International",
     logo: "PSA",
+    logoSrc: "/psa.webp",
     role: "Software Engineer (Internship)",
     period: "Sep 2024 - May 2025",
     bullets: [
@@ -91,6 +95,8 @@ export const experiences: Experience[] = [
   {
     company: "Reachfield IT Solutions",
     logo: "RI",
+    logoSrc: "/reachfield.webp",
+    logoSize: "sm",
     role: "Software Developer",
     period: "Oct 2019 - Apr 2020",
     bullets: [
