@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useId, useRef, useState } from "react";
+import { useId, useLayoutEffect, useRef, useState } from "react";
 import { ArrowRightIcon } from "@/components/icons";
 import {
   education as educationData,
@@ -156,6 +156,15 @@ export function ExperienceEducation() {
   const [active, setActive] = useState<TabId>("experience");
   const baseId = useId();
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const [indicator, setIndicator] = useState({ left: 0, width: 0 });
+
+  useLayoutEffect(() => {
+    const index = tabs.findIndex((tab) => tab.id === active);
+    const node = tabRefs.current[index];
+    if (node) {
+      setIndicator({ left: node.offsetLeft, width: node.offsetWidth });
+    }
+  }, [active]);
 
   function handleKeyDown(event: React.KeyboardEvent, index: number) {
     if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
@@ -176,7 +185,7 @@ export function ExperienceEducation() {
         <div
           role="tablist"
           aria-label="Experience and education"
-          className="-mb-px flex gap-7"
+          className="relative -mb-px flex gap-7"
         >
           {tabs.map((tab, index) => {
             const selected = active === tab.id;
@@ -194,26 +203,34 @@ export function ExperienceEducation() {
                 tabIndex={selected ? 0 : -1}
                 onClick={() => setActive(tab.id)}
                 onKeyDown={(event) => handleKeyDown(event, index)}
-                className={`-mb-px border-b-2 pb-2.5 text-3xl font-black tracking-[-0.035em] transition-colors ${
+                className={`pb-2.5 text-3xl font-black tracking-[-0.035em] transition-colors duration-200 ${
                   selected
-                    ? "border-[color:var(--accent)] text-[color:var(--text)]"
-                    : "border-transparent text-[color:var(--quiet)] hover:text-[color:var(--soft-text)]"
+                    ? "text-[color:var(--text)]"
+                    : "text-[color:var(--quiet)] hover:text-[color:var(--soft-text)]"
                 }`}
               >
                 {tab.label}
               </button>
             );
           })}
+          <span
+            aria-hidden="true"
+            className="absolute -bottom-px h-0.5 bg-[color:var(--accent)] transition-[transform,width] duration-300 ease-[var(--ease-out-quint)] motion-reduce:transition-none"
+            style={{
+              width: indicator.width,
+              transform: `translateX(${indicator.left}px)`,
+            }}
+          />
         </div>
 
         <a
           href={profile.linkedin}
           target="_blank"
           rel="noreferrer"
-          className="mb-3 hidden items-center gap-2 text-sm font-black text-[color:var(--accent)] hover:text-[color:var(--text)] sm:inline-flex"
+          className="group mb-3 hidden items-center gap-2 text-sm font-black text-[color:var(--accent)] transition-colors hover:text-[color:var(--text)] sm:inline-flex"
         >
           Full profile on LinkedIn
-          <ArrowRightIcon />
+          <ArrowRightIcon className="size-4 transition-transform duration-200 ease-[var(--ease-out-quart)] group-hover:translate-x-1" />
         </a>
       </div>
 
@@ -240,10 +257,10 @@ export function ExperienceEducation() {
         href={profile.linkedin}
         target="_blank"
         rel="noreferrer"
-        className="mt-5 inline-flex items-center gap-2 text-sm font-black text-[color:var(--accent)] hover:text-[color:var(--text)] sm:hidden"
+        className="group mt-5 inline-flex items-center gap-2 text-sm font-black text-[color:var(--accent)] transition-colors hover:text-[color:var(--text)] sm:hidden"
       >
         Full profile on LinkedIn
-        <ArrowRightIcon />
+        <ArrowRightIcon className="size-4 transition-transform duration-200 ease-[var(--ease-out-quart)] group-hover:translate-x-1" />
       </a>
     </section>
   );

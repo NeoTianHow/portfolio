@@ -107,7 +107,7 @@ export const education: Education[] = [
   {
     school: "Singapore Institute of Technology · University of Glasgow",
     logo: "SIT",
-    logoSrc: "/crimsonlogic.webp",
+    logoSrc: "/sit.webp",
     qualification: "BSc (Hons) in Computing Science",
     period: "2022 - 2025",
     badge: "GPA 4.68/5",
@@ -122,7 +122,7 @@ export const education: Education[] = [
   {
     school: "Singapore Polytechnic",
     logo: "SP",
-    logoSrc: "/crimsonlogic.webp",
+    logoSrc: "/sp.webp",
     qualification: "Diploma in Information Technology with Merit",
     period: "2017 - 2020",
     badge: "GPA 3.88/4",

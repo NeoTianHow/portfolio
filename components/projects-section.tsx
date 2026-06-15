@@ -19,10 +19,10 @@ export function ProjectsSection() {
         <a
           href={profile.resume}
           download
-          className="hidden items-center gap-2 text-sm font-black text-[color:var(--accent)] hover:text-[color:var(--text)] sm:inline-flex"
+          className="group hidden items-center gap-2 text-sm font-black text-[color:var(--accent)] transition-colors hover:text-[color:var(--text)] sm:inline-flex"
         >
           Download resume
-          <ArrowRightIcon />
+          <ArrowRightIcon className="size-4 transition-transform duration-200 ease-[var(--ease-out-quart)] group-hover:translate-x-1" />
         </a>
       </div>
 
@@ -41,13 +41,16 @@ export function ProjectsSection() {
             <CardTag
               key={project.slug}
               {...cardProps}
-              className="group block bg-[color:var(--panel-soft)] p-5 sm:p-6"
+              className="group relative block bg-[color:var(--panel-soft)] p-5 transition-colors duration-300 ease-[var(--ease-out-quart)] hover:bg-[color:var(--panel-strong)] sm:p-6"
             >
               <div className="flex gap-6 lg:gap-10">
                 <div className="flex-1">
                   <div>
-                    <h3 className="text-[22px] font-black leading-tight tracking-[-0.03em] text-[color:var(--text)]">
+                    <h3 className="flex items-center gap-2 text-[22px] font-black leading-tight tracking-[-0.03em] text-[color:var(--text)] transition-colors duration-200 group-hover:text-[color:var(--accent-strong)]">
                       {project.title}
+                      {project.github && (
+                        <ArrowRightIcon className="size-4 -translate-x-1 opacity-0 transition-[transform,opacity] duration-300 ease-[var(--ease-out-quart)] group-hover:translate-x-0 group-hover:opacity-100" />
+                      )}
                     </h3>
                     <p className="mt-0.5 text-xs font-medium text-[color:var(--muted)]">{project.period}</p>
                   </div>
@@ -72,7 +75,7 @@ export function ProjectsSection() {
                       alt={project.image.alt}
                       width={project.image.width}
                       height={project.image.height}
-                      className="h-full w-full object-contain p-3 opacity-75"
+                      className="h-full w-full object-contain p-3 opacity-75 transition-[opacity,transform] duration-500 ease-[var(--ease-out-quart)] group-hover:scale-[1.04] group-hover:opacity-100"
                     />
                   </div>
                 </div>

@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { profile } from "@/lib/portfolio-data";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { MonogramMark } from "@/components/icons";
 
 const navLinks = [
   { label: "home", href: "/#home" },
@@ -13,18 +14,32 @@ const navLinks = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[color:var(--line)] bg-[color:var(--header)] backdrop-blur-xl">
+    <header
+      className={`sticky top-0 z-50 border-b bg-[color:var(--header)] backdrop-blur-xl transition-[border-color,box-shadow] duration-300 ease-[var(--ease-out-quart)] ${
+        scrolled
+          ? "border-[color:var(--line-strong)] shadow-[0_8px_24px_rgba(21,24,26,0.06)]"
+          : "border-[color:var(--line)]"
+      }`}
+    >
       <div className="mx-auto flex h-16 w-full max-w-[1120px] items-center justify-between px-5 sm:px-8">
         <Link
           href="/#home"
-          className="flex items-center gap-3"
+          className="group flex items-center gap-3"
           aria-label={`${profile.name} home`}
           onClick={() => setOpen(false)}
         >
-          <span className="grid size-9 place-items-center bg-[color:var(--text)] text-sm font-black text-[color:var(--canvas)]">
-            {profile.initials}
+          <span className="grid size-9 place-items-center bg-[color:var(--text)] text-[color:var(--canvas)] transition-transform duration-200 ease-[var(--ease-out-quart)] group-hover:-translate-y-0.5">
+            <MonogramMark className="size-6" />
           </span>
           <span className="text-base font-black tracking-[-0.02em] text-[color:var(--text)]">
             {profile.name}
@@ -34,11 +49,11 @@ export function SiteHeader() {
         <nav className="hidden items-center gap-8 text-sm font-bold text-[color:var(--muted)] md:flex">
           {navLinks.map((link) =>
             link.href.startsWith("mailto:") ? (
-              <a key={link.label} href={link.href} className="hover:text-[color:var(--accent)]">
+              <a key={link.label} href={link.href} className="nav-link transition-colors duration-200 hover:text-[color:var(--accent)]">
                 {link.label}
               </a>
             ) : (
-              <Link key={link.label} href={link.href} className="hover:text-[color:var(--accent)]">
+              <Link key={link.label} href={link.href} className="nav-link transition-colors duration-200 hover:text-[color:var(--accent)]">
                 {link.label}
               </Link>
             )
@@ -68,7 +83,14 @@ export function SiteHeader() {
         </button>
       </div>
 
-      <div className={`mx-auto w-full max-w-[1120px] px-5 md:hidden ${open ? "block pb-5" : "hidden"}`}>
+      <div
+        className={`mx-auto grid w-full max-w-[1120px] px-5 transition-[grid-template-rows,opacity] duration-300 ease-[var(--ease-out-quint)] md:hidden ${
+          open
+            ? "grid-rows-[1fr] pb-5 opacity-100"
+            : "invisible grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden">
         <div className="surface border border-[color:var(--line)] p-3">
           <nav className="flex flex-col gap-1 text-sm font-bold text-[color:var(--muted)]">
             {navLinks.map((link) =>
@@ -86,6 +108,7 @@ export function SiteHeader() {
           <div className="mt-3 border-t border-[color:var(--line)] pt-3">
             <ThemeToggle />
           </div>
+        </div>
         </div>
       </div>
     </header>
