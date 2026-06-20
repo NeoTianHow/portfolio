@@ -1,32 +1,22 @@
 export const skillIconUrls: Record<string, string> = {
-  Angular:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg",
-  AWS: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
-  "Azure DevOps":
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuredevops/azuredevops-original.svg",
-  Docker:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
-  Java: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
-  JavaScript:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
-  Kafka:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachekafka/apachekafka-original.svg",
-  Kubernetes:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-original.svg",
-  MongoDB:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
-  MySQL:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
-  "Node.js":
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
-  Python:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
-  React:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
-  "Spring Boot":
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg",
-  TypeScript:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
-  "Vue.js":
-    "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg",
+  Angular: "/tech-icons/angular-original.svg",
+  AWS: "/tech-icons/amazonwebservices-original-wordmark.svg",
+  "Azure DevOps": "/tech-icons/azuredevops-original.svg",
+  Docker: "/tech-icons/docker-original.svg",
+  Flask: "/tech-icons/flask-original.svg",
+  GCP: "/tech-icons/googlecloud-original.svg",
+  Java: "/tech-icons/java-original.svg",
+  JavaScript: "/tech-icons/javascript-original.svg",
+  Kafka: "/tech-icons/apachekafka-original.svg",
+  Kubernetes: "/tech-icons/kubernetes-original.svg",
+  MongoDB: "/tech-icons/mongodb-original.svg",
+  "Next.js": "/tech-icons/nextjs-original.svg",
+  MySQL: "/tech-icons/mysql-original.svg",
+  "Node.js": "/tech-icons/nodejs-original.svg",
+  Python: "/tech-icons/python-original.svg",
+  React: "/tech-icons/react-original.svg",
+  "Spring Boot": "/tech-icons/spring-original.svg",
+  TypeScript: "/tech-icons/typescript-original.svg",
+  Vercel: "/tech-icons/vercel-original.svg",
+  "Vue.js": "/tech-icons/vuejs-original.svg",
 };

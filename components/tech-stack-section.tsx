@@ -4,15 +4,15 @@ import { skillIconUrls } from "@/components/skill-icons";
 const skillGroups = [
   {
     title: "Backend",
-    skills: ["Java", "Spring Boot", "Node.js", "MySQL", "Python", "Kafka", "MongoDB", "Redis"],
-  },
-  {
-    title: "Cloud & Infrastructure",
-    skills: ["Docker", "Kubernetes", "AWS", "Azure DevOps"],
+    skills: ["Java", "Spring Boot", "Node.js", "Kafka", "Python", "Flask", "MySQL", "Redis", "MongoDB"],
   },
   {
     title: "Frontend",
-    skills: ["Angular", "TypeScript", "React", "Vue.js", "JavaScript"],
+    skills: ["TypeScript", "Angular", "React", "Next.js", "Vue.js", "JavaScript"],
+  },
+  {
+    title: "Cloud & DevOps",
+    skills: ["Docker", "Kubernetes", "AWS", "Azure DevOps", "GCP"],
   },
 ];
 
@@ -37,6 +37,7 @@ function SkillIcon({ skill }: { skill: string }) {
   }
 
   const iconUrl = skillIconUrls[skill];
+  const shouldInvertInDark = ["Flask", "Kafka", "Next.js", "Vercel"].includes(skill);
 
   if (!iconUrl) {
     return (
@@ -54,7 +55,7 @@ function SkillIcon({ skill }: { skill: string }) {
       width={20}
       height={20}
       unoptimized
-      className={`size-5 shrink-0 object-contain${skill === "Kafka" ? " [[data-theme=dark]_&]:invert" : ""}`}
+      className={`size-5 shrink-0 object-contain${shouldInvertInDark ? " [[data-theme=dark]_&]:invert" : ""}`}
     />
   );
 }

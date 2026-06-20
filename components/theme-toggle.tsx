@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useSyncExternalStore } from "react";
+import { useEffect, useId, useSyncExternalStore } from "react";
 
 type Theme = "dark" | "light";
 
@@ -56,7 +56,7 @@ const rays = [
   [17.5, 6.5, 19.8, 4.2],
 ] as const;
 
-function ThemeIcon({ isDark }: { isDark: boolean }) {
+function ThemeIcon({ isDark, maskId }: { isDark: boolean; maskId: string }) {
   return (
     <svg
       aria-hidden="true"
@@ -67,7 +67,7 @@ function ThemeIcon({ isDark }: { isDark: boolean }) {
           body in light mode (full sun) and slides in to carve a crescent
           in dark mode. */}
       <defs>
-        <mask id="theme-moon-mask">
+        <mask id={maskId}>
           <rect width="24" height="24" fill="white" />
           <circle
             cx="17"
@@ -88,7 +88,7 @@ function ThemeIcon({ isDark }: { isDark: boolean }) {
         cy="12"
         r="5.5"
         fill="currentColor"
-        mask="url(#theme-moon-mask)"
+        mask={`url(#${maskId})`}
         className="origin-center transition-transform duration-500 ease-[var(--ease-out-expo)] [transform-box:view-box]"
         style={{ transform: isDark ? "scale(1.12)" : "scale(1)" }}
       />
@@ -114,6 +114,7 @@ function ThemeIcon({ isDark }: { isDark: boolean }) {
 
 export function ThemeToggle() {
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const maskId = `theme-moon-${useId().replaceAll(":", "")}`;
 
   useEffect(() => {
     const storedTheme = readStoredTheme();
@@ -136,9 +137,9 @@ export function ThemeToggle() {
       aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
       title={`Switch to ${isDark ? "light" : "dark"} theme`}
       onClick={toggleTheme}
-      className="group grid size-9 place-items-center border border-[color:var(--line-strong)] bg-[color:var(--panel-soft)] text-[color:var(--muted)] transition-[color,border-color] duration-200 ease-[var(--ease-out-quart)] hover:border-[color:var(--accent)] hover:text-[color:var(--text)] active:scale-[0.94]"
+      className="group grid size-11 place-items-center border border-[color:var(--line-strong)] bg-[color:var(--panel-soft)] text-[color:var(--muted)] transition-[color,border-color] duration-200 ease-[var(--ease-out-quart)] hover:border-[color:var(--accent)] hover:text-[color:var(--text)] active:scale-[0.94]"
     >
-      <ThemeIcon isDark={isDark} />
+      <ThemeIcon isDark={isDark} maskId={maskId} />
     </button>
   );
 }

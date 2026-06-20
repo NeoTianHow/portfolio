@@ -19,7 +19,7 @@ export function ProjectsSection() {
         <a
           href={profile.resume}
           download
-          className="group hidden items-center gap-2 text-sm font-black text-[color:var(--accent)] transition-colors hover:text-[color:var(--text)] sm:inline-flex"
+          className="group hidden min-h-11 items-center gap-2 text-sm font-black text-[color:var(--accent)] transition-colors hover:text-[color:var(--text)] sm:inline-flex"
         >
           Download resume
           <ArrowRightIcon className="size-4 transition-transform duration-200 ease-[var(--ease-out-quart)] group-hover:translate-x-1" />
@@ -68,14 +68,14 @@ export function ProjectsSection() {
                     ))}
                   </div>
                 </div>
-                <div className="hidden w-[220px] shrink-0 self-center lg:block">
-                  <div className="relative aspect-[16/9] overflow-hidden bg-[color:var(--canvas-soft)]">
+                <div className="hidden w-[200px] shrink-0 self-center lg:block">
+                  <div className="relative aspect-[4/3] overflow-hidden border border-[color:var(--line-strong)] bg-[color:var(--panel)] p-1.5">
                     <Image
                       src={project.image.src}
                       alt={project.image.alt}
                       width={project.image.width}
                       height={project.image.height}
-                      className="h-full w-full object-contain p-3 opacity-75 transition-[opacity,transform] duration-500 ease-[var(--ease-out-quart)] group-hover:scale-[1.04] group-hover:opacity-100"
+                      className="block h-full w-full object-contain transition-transform duration-500 ease-[var(--ease-out-quart)] group-hover:scale-[1.03]"
                     />
                   </div>
                 </div>

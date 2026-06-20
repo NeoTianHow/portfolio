@@ -2,6 +2,9 @@ export type Experience = {
   company: string;
   logo: string;
   logoSrc?: string;
+  logoDarkSrc?: string;
+  logoWidth?: number;
+  logoHeight?: number;
   logoSize?: "sm" | "md";
   role: string;
   period: string;
@@ -19,6 +22,9 @@ export type Education = {
   school: string;
   logo: string;
   logoSrc?: string;
+  logoDarkSrc?: string;
+  logoWidth?: number;
+  logoHeight?: number;
   logoSize?: "sm" | "md";
   qualification: string;
   period: string;
@@ -63,7 +69,10 @@ export const experiences: Experience[] = [
   {
     company: "CrimsonLogic",
     logo: "CL",
-    logoSrc: "/crimsonlogic.webp",
+    logoSrc: "/crimsonlogic-logo.webp",
+    logoDarkSrc: "/crimsonlogic-logo-dark.webp",
+    logoWidth: 100,
+    logoHeight: 128,
     role: "Software Engineer",
     period: "Jun 2025",
     status: "Current",
@@ -72,12 +81,15 @@ export const experiences: Experience[] = [
       "Designed and executed 500 UAT test cases and resolved 40 defects, including a critical concurrency issue.",
       "Introduced AI-assisted development workflows and Azure DevOps code review pipelines to improve delivery consistency.",
     ],
-    tech: ["Java", "Spring Boot", "Angular", "SQL", "Azure DevOps"],
+    tech: ["Spring Boot", "Angular", "Kafka", "MySQL", "Azure DevOps"],
   },
   {
     company: "PSA International",
     logo: "PSA",
-    logoSrc: "/psa.webp",
+    logoSrc: "/psa-logo.webp",
+    logoDarkSrc: "/psa-logo-dark.webp",
+    logoWidth: 138,
+    logoHeight: 46,
     role: "Software Engineer (Internship)",
     period: "Sep 2024 - May 2025",
     bullets: [
@@ -85,21 +97,23 @@ export const experiences: Experience[] = [
       "Designed and executed 1,000+ test cases for Global PortNet and DigitalPort enterprise systems.",
       "Translated client requirements into 60+ Figma screens and delivered Angular frontend features.",
     ],
-    tech: ["Angular", "Kafka", "Spring Boot", "Bash", "Figma"],
+    tech: ["Angular", "Kafka", "UI/UX Design", "Azure DevOps"],
   },
   {
     company: "Reachfield IT Solutions",
     logo: "RI",
-    logoSrc: "/reachfield.webp",
+    logoSrc: "/reachfield-logo.webp",
+    logoWidth: 180,
+    logoHeight: 123,
     logoSize: "sm",
-    role: "Software Developer",
+    role: "Software Developer (Internship)",
     period: "Oct 2019 - Apr 2020",
     bullets: [
       "Integrated facial recognition into a Visitor Management System using Java/J2EE and Face++.",
       "Enhanced a Security Guard Management System with real-time incident alerts and RFID patrol tracking.",
       "Improved entry processing and guard accountability for security-focused enterprise workflows.",
     ],
-    tech: ["Java", "J2EE", "JavaScript", "SQL", "Face++"],
+    tech: ["Java", "JavaScript", "Face++", "MySQL", "RFID"],
   },
 ];
 
@@ -107,7 +121,10 @@ export const education: Education[] = [
   {
     school: "Singapore Institute of Technology · University of Glasgow",
     logo: "SIT",
-    logoSrc: "/sit.webp",
+    logoSrc: "/sit-logo.webp",
+    logoDarkSrc: "/sit-logo-dark.webp",
+    logoWidth: 328,
+    logoHeight: 304,
     qualification: "BSc (Hons) in Computing Science",
     period: "2022 - 2025",
     badge: "GPA 4.68/5",
@@ -122,7 +139,10 @@ export const education: Education[] = [
   {
     school: "Singapore Polytechnic",
     logo: "SP",
-    logoSrc: "/sp.webp",
+    logoSrc: "/sp-logo.webp",
+    logoDarkSrc: "/sp-logo-dark.webp",
+    logoWidth: 300,
+    logoHeight: 188,
     qualification: "Diploma in Information Technology with Merit",
     period: "2017 - 2020",
     badge: "GPA 3.88/4",
@@ -144,21 +164,21 @@ export const projects: Project[] = [
     summary:
       "An AI-powered platform for GitLab repository visibility, branch context summaries, and automated merge-request reviews aligned with internal standards.",
     image: {
-      src: "/capstone-project-architecture.webp",
-      alt: "PSA CodeOptics architecture diagram",
-      width: 2179,
-      height: 1070,
+      src: "/psa-codeoptics-ai-code-review-thumbnail.webp",
+      alt: "PSA CodeOptics thumbnail showing an AI code review workflow for GitLab workspaces",
+      width: 1600,
+      height: 1200,
     },
     github: "https://github.com/NeoTianHow/code-optics",
     tech: [
-      "Angular",
       "Spring Boot",
       "Spring AI",
+      "Angular",
       "Ollama",
       "Qwen-2.5-Coder",
       "Chroma",
-      "H2",
-      "JasperReports",
+      "H2 Database",
+      "Jasper Reports",
     ],
   },
   {
@@ -168,23 +188,47 @@ export const projects: Project[] = [
     summary:
       "A distributed ticketing platform with virtual queueing, bot protection, real-time updates, and Kubernetes scaling for high-concurrency purchase flows.",
     image: {
-      src: "/microservice-ticketing-architecture.webp",
-      alt: "Microservice ticketing system architecture diagram",
-      width: 2721,
-      height: 1237,
+      src: "/microservice-ticketing-thumbnail.webp",
+      alt: "Microservice ticketing thumbnail showing queue-gated purchase flow and Kubernetes services",
+      width: 1600,
+      height: 1200,
     },
     github: "https://github.com/NeoTianHow/ticket-vibe",
     tech: [
       "React",
       "Node.js",
+      "WebSocket",
+      "RabbitMQ",
+      "Redis",
+      "MongoDB",
       "Docker",
       "Kubernetes",
       "GCP",
-      "Redis",
-      "MongoDB",
-      "RabbitMQ",
-      "WebSocket",
-      "Cloudflare",
+      "PayPal",
+    ],
+  },
+  {
+    slug: "astar-route-planner",
+    title: "A* Route Planner",
+    period: "Jan 2023 - Apr 2023",
+    summary:
+      "A Flask journey planner that uses graph data structures and A* search to recommend Johor bus routes with transfers, walking links, traffic labels, and map visualisation.",
+    image: {
+      src: "/astar-route-planner-thumbnail.webp",
+      alt: "A* Route Planner thumbnail showing a real map route result, search form, route metrics, and graph search flow",
+      width: 1600,
+      height: 1200,
+    },
+    github: "https://github.com/NeoTianHow/astar-route-planner",
+    tech: [
+      "Python",
+      "Flask",
+      "A* Search",
+      "PostgreSQL",
+      "Folium",
+      "Leaflet",
+      "OpenRouteService",
+      "Telegram Bot API",
     ],
   },
 ];

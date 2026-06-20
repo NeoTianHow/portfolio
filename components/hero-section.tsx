@@ -16,6 +16,7 @@ export function HeroSection() {
           <span className="reveal block text-4xl leading-[1.08] sm:text-5xl lg:text-[58px]" style={{ "--i": 1 } as CSSProperties}>
             Hi, I&apos;m Tian How.
           </span>
+          {" "}
           <span className="reveal mt-2 block max-w-[15em] text-3xl leading-[1.12] text-[color:var(--soft-text)] sm:text-[40px] lg:text-[44px]" style={{ "--i": 2 } as CSSProperties}>
             Software engineer based in Singapore.
           </span>
@@ -34,7 +35,7 @@ export function HeroSection() {
           <a
             href={profile.resume}
             download
-            className="group inline-flex h-11 items-center justify-center gap-3 bg-[color:var(--accent)] px-5 text-sm font-semibold text-white transition-[background-color,transform] duration-150 ease-[var(--ease-out-quart)] hover:bg-[color:var(--accent-strong)] active:scale-[0.97]"
+            className="group inline-flex h-11 items-center justify-center gap-3 bg-[color:var(--accent)] px-5 text-sm font-semibold text-[color:var(--accent-ink)] transition-[background-color,transform] duration-150 ease-[var(--ease-out-quart)] hover:bg-[color:var(--accent-strong)] active:scale-[0.97]"
           >
             Download resume
             <ArrowRightIcon className="size-4 transition-transform duration-200 ease-[var(--ease-out-quart)] group-hover:translate-x-1" />

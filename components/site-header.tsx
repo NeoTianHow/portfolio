@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { profile } from "@/lib/portfolio-data";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { MonogramMark } from "@/components/icons";
+import { ArrowRightIcon, MonogramMark } from "@/components/icons";
 
 const navLinks = [
   { label: "home", href: "/#home" },
@@ -15,6 +15,7 @@ const navLinks = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const menuId = "site-mobile-menu";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -22,6 +23,19 @@ export function SiteHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
 
   return (
     <header
@@ -34,7 +48,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 w-full max-w-[1120px] items-center justify-between px-5 sm:px-8">
         <Link
           href="/#home"
-          className="group flex items-center gap-3"
+          className="group flex min-h-11 items-center gap-3"
           aria-label={`${profile.name} home`}
           onClick={() => setOpen(false)}
         >
@@ -49,11 +63,11 @@ export function SiteHeader() {
         <nav className="hidden items-center gap-8 text-sm font-bold text-[color:var(--muted)] md:flex">
           {navLinks.map((link) =>
             link.href.startsWith("mailto:") ? (
-              <a key={link.label} href={link.href} className="nav-link transition-colors duration-200 hover:text-[color:var(--accent)]">
+              <a key={link.label} href={link.href} className="nav-link inline-flex min-h-11 items-center px-1.5 transition-colors duration-200 hover:text-[color:var(--accent)]">
                 {link.label}
               </a>
             ) : (
-              <Link key={link.label} href={link.href} className="nav-link transition-colors duration-200 hover:text-[color:var(--accent)]">
+              <Link key={link.label} href={link.href} className="nav-link inline-flex min-h-11 items-center px-1.5 transition-colors duration-200 hover:text-[color:var(--accent)]">
                 {link.label}
               </Link>
             )
@@ -66,46 +80,61 @@ export function SiteHeader() {
 
         <button
           type="button"
-          className="inline-flex size-10 items-center justify-center border border-[color:var(--line-strong)] bg-[color:var(--panel-soft)] text-[color:var(--text)] md:hidden"
-          aria-label="Toggle navigation menu"
+          className="group relative inline-flex size-11 items-center justify-center border border-[color:var(--line-strong)] bg-[color:var(--panel-soft)] text-[color:var(--text)] transition-[border-color,background-color,transform] duration-200 ease-[var(--ease-out-quart)] hover:border-[color:var(--accent)] active:scale-[0.96] md:hidden"
+          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={open}
+          aria-controls={menuId}
           onClick={() => setOpen((value) => !value)}
         >
-          {open ? (
-            <svg aria-hidden="true" viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <path d="M6 6l12 12M18 6 6 18" />
-            </svg>
-          ) : (
-            <svg aria-hidden="true" viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <path d="M4 7h16M4 12h16M4 17h16" />
-            </svg>
-          )}
+          <span
+            aria-hidden="true"
+            className={`absolute h-0.5 w-5 bg-current transition-transform duration-300 ease-[var(--ease-out-quint)] ${
+              open ? "translate-y-0 rotate-45" : "-translate-y-1.5 rotate-0"
+            }`}
+          />
+          <span
+            aria-hidden="true"
+            className={`absolute h-0.5 w-5 bg-current transition-[opacity,transform] duration-200 ease-[var(--ease-out-quart)] ${
+              open ? "scale-x-0 opacity-0" : "scale-x-100 opacity-100"
+            }`}
+          />
+          <span
+            aria-hidden="true"
+            className={`absolute h-0.5 w-5 bg-current transition-transform duration-300 ease-[var(--ease-out-quint)] ${
+              open ? "translate-y-0 -rotate-45" : "translate-y-1.5 rotate-0"
+            }`}
+          />
         </button>
       </div>
 
       <div
+        id={menuId}
+        aria-hidden={!open}
         className={`mx-auto grid w-full max-w-[1120px] px-5 transition-[grid-template-rows,opacity] duration-300 ease-[var(--ease-out-quint)] md:hidden ${
           open
             ? "grid-rows-[1fr] pb-5 opacity-100"
-            : "invisible grid-rows-[0fr] opacity-0"
+            : "pointer-events-none invisible grid-rows-[0fr] opacity-0"
         }`}
       >
         <div className="overflow-hidden">
-        <div className="surface border border-[color:var(--line)] p-3">
-          <nav className="flex flex-col gap-1 text-sm font-bold text-[color:var(--muted)]">
+        <div className="border-t border-[color:var(--line)] py-2">
+          <nav className="grid text-base font-black tracking-[-0.01em] text-[color:var(--soft-text)]">
             {navLinks.map((link) =>
               link.href.startsWith("mailto:") ? (
-                <a key={link.label} href={link.href} onClick={() => setOpen(false)} className="px-4 py-3 hover:bg-[color:var(--chip)] hover:text-[color:var(--text)]">
-                  {link.label}
+                <a key={link.label} href={link.href} onClick={() => setOpen(false)} className="group flex min-h-12 items-center justify-between border-b border-[color:var(--line)] px-1 transition-colors duration-200 hover:text-[color:var(--text)] focus-visible:text-[color:var(--text)]">
+                  <span>{link.label}</span>
+                  <ArrowRightIcon className="size-4 text-[color:var(--accent)] opacity-75 transition-transform duration-200 ease-[var(--ease-out-quart)] group-hover:translate-x-1" />
                 </a>
               ) : (
-                <Link key={link.label} href={link.href} onClick={() => setOpen(false)} className="px-4 py-3 hover:bg-[color:var(--chip)] hover:text-[color:var(--text)]">
-                  {link.label}
+                <Link key={link.label} href={link.href} onClick={() => setOpen(false)} className="group flex min-h-12 items-center justify-between border-b border-[color:var(--line)] px-1 transition-colors duration-200 hover:text-[color:var(--text)] focus-visible:text-[color:var(--text)]">
+                  <span>{link.label}</span>
+                  <ArrowRightIcon className="size-4 text-[color:var(--accent)] opacity-75 transition-transform duration-200 ease-[var(--ease-out-quart)] group-hover:translate-x-1" />
                 </Link>
               )
             )}
           </nav>
-          <div className="mt-3 border-t border-[color:var(--line)] pt-3">
+          <div className="flex min-h-12 items-center justify-between px-1 pt-2 text-sm font-bold text-[color:var(--muted)]">
+            <span>Theme</span>
             <ThemeToggle />
           </div>
         </div>

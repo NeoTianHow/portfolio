@@ -13,26 +13,46 @@ import {
 
 function LogoBlock({
   logo,
+  logoDarkSrc,
+  logoHeight,
   logoSrc,
   logoSize,
+  logoWidth,
   label,
 }: {
   logo: string;
+  logoDarkSrc?: string;
+  logoHeight?: number;
   logoSrc?: string;
   logoSize?: "sm" | "md";
+  logoWidth?: number;
   label: string;
 }) {
   if (logoSrc) {
+    const imageClassName = `h-auto w-auto max-w-[56px] object-contain${logoSize === "sm" ? " max-h-8" : " max-h-11"}`;
+
     return (
       <div className="mt-0.5 flex h-11 w-14 shrink-0 items-center justify-center overflow-hidden">
         <Image
           src={logoSrc}
           alt={label}
-          width={56}
-          height={44}
+          width={logoWidth ?? 56}
+          height={logoHeight ?? 44}
           unoptimized
-          className={`w-auto max-w-[56px] object-contain${logoSize === "sm" ? " h-8" : " h-11"}`}
+          style={{ height: "auto", width: "auto" }}
+          className={`${imageClassName}${logoDarkSrc ? " [[data-theme=dark]_&]:hidden" : ""}`}
         />
+        {logoDarkSrc && (
+          <Image
+            src={logoDarkSrc}
+            alt={label}
+            width={logoWidth ?? 56}
+            height={logoHeight ?? 44}
+            unoptimized
+            style={{ height: "auto", width: "auto" }}
+            className={`hidden ${imageClassName} [[data-theme=dark]_&]:block`}
+          />
+        )}
       </div>
     );
   }
@@ -49,8 +69,11 @@ function ExperienceRow({ experience }: { experience: Experience }) {
       <div className="flex items-start gap-4">
         <LogoBlock
           logo={experience.logo}
+          logoDarkSrc={experience.logoDarkSrc}
+          logoHeight={experience.logoHeight}
           logoSrc={experience.logoSrc}
           logoSize={experience.logoSize}
+          logoWidth={experience.logoWidth}
           label={experience.company}
         />
         <div className="min-w-0 flex-1">
@@ -100,8 +123,11 @@ function EducationRow({ entry }: { entry: Education }) {
       <div className="flex items-start gap-4">
         <LogoBlock
           logo={entry.logo}
+          logoDarkSrc={entry.logoDarkSrc}
+          logoHeight={entry.logoHeight}
           logoSrc={entry.logoSrc}
           logoSize={entry.logoSize}
+          logoWidth={entry.logoWidth}
           label={entry.school}
         />
         <div className="min-w-0 flex-1">
@@ -227,7 +253,7 @@ export function ExperienceEducation() {
           href={profile.linkedin}
           target="_blank"
           rel="noreferrer"
-          className="group mb-3 hidden items-center gap-2 text-sm font-black text-[color:var(--accent)] transition-colors hover:text-[color:var(--text)] sm:inline-flex"
+          className="group mb-1 hidden min-h-11 items-center gap-2 text-sm font-black text-[color:var(--accent)] transition-colors hover:text-[color:var(--text)] sm:inline-flex"
         >
           Full profile on LinkedIn
           <ArrowRightIcon className="size-4 transition-transform duration-200 ease-[var(--ease-out-quart)] group-hover:translate-x-1" />
@@ -257,7 +283,7 @@ export function ExperienceEducation() {
         href={profile.linkedin}
         target="_blank"
         rel="noreferrer"
-        className="group mt-5 inline-flex items-center gap-2 text-sm font-black text-[color:var(--accent)] transition-colors hover:text-[color:var(--text)] sm:hidden"
+        className="group mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-black text-[color:var(--accent)] transition-colors hover:text-[color:var(--text)] sm:hidden"
       >
         Full profile on LinkedIn
         <ArrowRightIcon className="size-4 transition-transform duration-200 ease-[var(--ease-out-quart)] group-hover:translate-x-1" />

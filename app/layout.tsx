@@ -15,7 +15,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Neo Tian How | Software Engineer",
+  title: "Neo Tian How",
   description:
     "Portfolio of Neo Tian How, a Singapore-based software engineer building full-stack, cloud-native, and AI-assisted engineering systems.",
 };
