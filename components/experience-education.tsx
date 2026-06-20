@@ -232,7 +232,7 @@ export function ExperienceEducation() {
                 className={`pb-2.5 text-3xl font-black tracking-[-0.035em] transition-colors duration-200 ${
                   selected
                     ? "text-[color:var(--text)]"
-                    : "text-[color:var(--quiet)] hover:text-[color:var(--soft-text)]"
+                    : "text-[color:var(--muted)] hover:text-[color:var(--soft-text)]"
                 }`}
               >
                 {tab.label}

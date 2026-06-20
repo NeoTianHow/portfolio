@@ -27,7 +27,7 @@ export function ProjectsSection() {
       </div>
 
       <div className="space-y-px bg-[color:var(--line-strong)]">
-        {projects.map((project) => {
+        {projects.map((project, index) => {
           const CardTag = project.github ? "a" : "div";
           const cardProps = project.github
             ? {
@@ -75,6 +75,9 @@ export function ProjectsSection() {
                       alt={project.image.alt}
                       width={project.image.width}
                       height={project.image.height}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      fetchPriority={index === 0 ? "high" : "auto"}
+                      sizes="200px"
                       className="block h-full w-full object-contain transition-transform duration-500 ease-[var(--ease-out-quart)] group-hover:scale-[1.03]"
                     />
                   </div>

@@ -68,7 +68,7 @@ export function HeroSection() {
               alt={`${profile.name} profile picture`}
               width={738}
               height={942}
-              priority
+              preload
               className="aspect-[4/5] w-full object-cover object-center"
             />
           </div>
