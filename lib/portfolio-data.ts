@@ -61,7 +61,6 @@ export const profile = {
   headline: "I build scalable software and practical digital systems.",
   summary:
     "Full-stack software engineer building enterprise web platforms, backend automation, cloud-native systems, and AI-assisted developer workflows.",
-  availability: "Available for software engineering opportunities",
   personalLine: "Software Engineer from Singapore",
 };
 
@@ -77,9 +76,9 @@ export const experiences: Experience[] = [
     period: "Jun 2025",
     status: "Current",
     bullets: [
-      "Developed truck appointment and capacity management modules for a Port Community System in Antwerp.",
-      "Designed and executed 500 UAT test cases and resolved 40 defects, including a critical concurrency issue.",
-      "Introduced AI-assisted development workflows and Azure DevOps code review pipelines to improve delivery consistency.",
+      "Developed truck appointment and terminal capacity management modules for PSA's Port Community System in Antwerp using Spring Boot and Angular, supporting appointment scheduling, container tracking, gate timeslot availability, and handover document generation.",
+      "Designed and executed 500+ UAT test cases, identifying and resolving 40 defects, including a critical concurrency issue that allowed multiple trucking companies to reserve the final available gate timeslot.",
+      "Introduced AI-assisted development practices by converting team coding standards into reusable AI agent skills and supporting Azure DevOps code review automation, improving code consistency and reducing delivery time by 15-20%.",
     ],
     tech: ["Spring Boot", "Angular", "Kafka", "MySQL", "Azure DevOps"],
   },
@@ -93,9 +92,9 @@ export const experiences: Experience[] = [
     role: "Software Engineer (Internship)",
     period: "Sep 2024 - May 2025",
     bullets: [
-      "Automated migration of 50 Kafka topics and 150 consumer groups with reusable batch scripts.",
-      "Designed and executed 1,000+ test cases for Global PortNet and DigitalPort enterprise systems.",
-      "Translated client requirements into 60+ Figma screens and delivered Angular frontend features.",
+      "Automated migration of 50 Kafka topics and 150 consumer groups using reusable batch scripts, preserving partitioning, retention policies, and ACL configurations across environments.",
+      "Designed and executed 1,000+ test cases for Global PortNet and DigitalPort enterprise systems, validating business workflows and working with developers to resolve critical defects before release.",
+      "Supported frontend design solutioning by translating client requirements into 60+ Figma screens and building Angular features integrated with backend services for shipping lines, hauliers, and terminal operators.",
     ],
     tech: ["Angular", "Kafka", "UI/UX Design", "Azure DevOps"],
   },
@@ -109,9 +108,8 @@ export const experiences: Experience[] = [
     role: "Software Developer (Internship)",
     period: "Oct 2019 - Apr 2020",
     bullets: [
-      "Integrated facial recognition into a Visitor Management System using Java/J2EE and Face++.",
-      "Enhanced a Security Guard Management System with real-time incident alerts and RFID patrol tracking.",
-      "Improved entry processing and guard accountability for security-focused enterprise workflows.",
+      "Integrated facial recognition into a Java/J2EE Visitor Management System using Face++, supporting automated visitor verification, blacklist checks, and live camera capture at security checkpoints.",
+      "Enhanced a Security Guard Management System with real-time incident alerts and RFID checkpoint tracking, improving patrol visibility and response coordination across assigned locations.",
     ],
     tech: ["Java", "JavaScript", "Face++", "MySQL", "RFID"],
   },
@@ -159,10 +157,10 @@ export const education: Education[] = [
 export const projects: Project[] = [
   {
     slug: "psa-codeoptics",
-    title: "PSA CodeOptics",
+    title: "CodeOptics",
     period: "Nov 2024 - Mar 2025",
     summary:
-      "An AI-powered platform for GitLab repository visibility, branch context summaries, and automated merge-request reviews aligned with internal standards.",
+      "CodeOptics is a full-stack GitLab analytics and review platform built for large enterprise workspaces. It helps teams identify stale and unmerged branches, summarize code changes using a local Qwen model, generate cross-repository PDF reports, and run AI-assisted merge request reviews through GitLab webhooks, while keeping code internal.",
     image: {
       src: "/psa-codeoptics-ai-code-review-thumbnail.webp",
       alt: "PSA CodeOptics thumbnail showing an AI code review workflow for GitLab workspaces",
@@ -183,10 +181,10 @@ export const projects: Project[] = [
   },
   {
     slug: "microservice-ticketing",
-    title: "Microservice Ticketing Solution",
+    title: "TicketVibe",
     period: "Aug 2023 - Dec 2023",
     summary:
-      "A distributed ticketing platform with virtual queueing, bot protection, real-time updates, and Kubernetes scaling for high-concurrency purchase flows.",
+      "Ticket Vibe is a cloud-native ticketing platform built for high-demand event sales. It helps users browse events, join a virtual waiting room, and receive short-lived access tokens used to control access during ticket purchase, using RabbitMQ for queue messaging, Redis for real-time queue state, and Kubernetes for scalable deployment.",
     image: {
       src: "/microservice-ticketing-thumbnail.webp",
       alt: "Microservice ticketing thumbnail showing queue-gated purchase flow and Kubernetes services",
@@ -212,7 +210,7 @@ export const projects: Project[] = [
     title: "A* Route Planner",
     period: "Jan 2023 - Apr 2023",
     summary:
-      "A Flask journey planner that uses graph data structures and A* search to recommend Johor bus routes with transfers, walking links, traffic labels, and map visualisation.",
+      "A* Route Planner is a Flask-based journey application built for Bas Muafakat Johor buses. It helps users find nearby bus stops, calculate recommended routes using graph-based A* search, and handle bus transfers and walking links.",
     image: {
       src: "/astar-route-planner-thumbnail.webp",
       alt: "A* Route Planner thumbnail showing a real map route result, search form, route metrics, and graph search flow",

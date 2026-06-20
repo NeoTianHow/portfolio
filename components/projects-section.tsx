@@ -69,7 +69,7 @@ export function ProjectsSection() {
                   </div>
                 </div>
                 <div className="hidden w-[200px] shrink-0 self-center lg:block">
-                  <div className="relative aspect-[4/3] overflow-hidden border border-[color:var(--line-strong)] bg-[color:var(--panel)] p-1.5">
+                  <div className="relative aspect-[4/3] overflow-hidden border border-[color:var(--line-strong)] bg-[color:var(--panel)]">
                     <Image
                       src={project.image.src}
                       alt={project.image.alt}
