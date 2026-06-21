@@ -101,11 +101,6 @@ button {
   color: white;
 }
 
-.surface {
-  background: var(--panel-soft);
-  box-shadow: 0 8px 16px rgba(21, 24, 26, 0.05);
-}
-
 .chip {
   background: var(--chip);
   color: var(--soft-text);

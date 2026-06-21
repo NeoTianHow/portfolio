@@ -33,7 +33,7 @@ export type Education = {
   honors?: Honor[];
 };
 
-export type Project = {
+type Project = {
   slug: string;
   title: string;
   period: string;
@@ -50,18 +50,9 @@ export type Project = {
 
 export const profile = {
   name: "Neo Tian How",
-  shortName: "Neo",
-  initials: "NT",
-  role: "Software Engineer",
-  location: "Singapore",
   email: "tianhow1234@hotmail.com",
-  phone: "90082094",
   linkedin: "https://www.linkedin.com/in/neotianhow/",
   resume: "/resume.pdf",
-  headline: "I build scalable software and practical digital systems.",
-  summary:
-    "Full-stack software engineer building enterprise web platforms, backend automation, cloud-native systems, and AI-assisted developer workflows.",
-  personalLine: "Software Engineer from Singapore",
 };
 
 export const experiences: Experience[] = [

@@ -17,6 +17,5 @@ export const skillIconUrls: Record<string, string> = {
   React: "/tech-icons/react-original.svg",
   "Spring Boot": "/tech-icons/spring-original.svg",
   TypeScript: "/tech-icons/typescript-original.svg",
-  Vercel: "/tech-icons/vercel-original.svg",
   "Vue.js": "/tech-icons/vuejs-original.svg",
 };

@@ -69,6 +69,8 @@ export function HeroSection() {
               width={738}
               height={942}
               preload
+              fetchPriority="high"
+              sizes="(max-width: 1023px) min(100vw - 40px, 380px), 380px"
               className="aspect-[4/5] w-full object-cover object-center"
             />
           </div>

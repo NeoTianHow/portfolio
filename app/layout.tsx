@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Host_Grotesk, JetBrains_Mono } from "next/font/google";
+import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const hostGrotesk = Host_Grotesk({
@@ -15,10 +16,27 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Neo Tian How",
-  description:
-    "Portfolio of Neo Tian How, a Singapore-based software engineer building full-stack, cloud-native, and AI-assisted engineering systems.",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
+  },
+  applicationName: siteConfig.name,
 };
+
+const themeInitScript = `
+(() => {
+  try {
+    const stored = window.localStorage.getItem("theme");
+    const theme = stored === "dark" || stored === "light" ? stored : "light";
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+  } catch {
+    document.documentElement.dataset.theme = "light";
+    document.documentElement.style.colorScheme = "light";
+  }
+})();
+`;
 
 export default function RootLayout({
   children,
@@ -31,7 +49,11 @@ export default function RootLayout({
       data-theme="light"
       className={`${hostGrotesk.variable} ${jetBrainsMono.variable} h-full antialiased`}
       style={{ colorScheme: "light" }}
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="min-h-full">{children}</body>
     </html>
   );

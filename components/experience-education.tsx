@@ -38,7 +38,6 @@ function LogoBlock({
           alt={label}
           width={logoWidth ?? 56}
           height={logoHeight ?? 44}
-          unoptimized
           style={{ height: "auto", width: "auto" }}
           className={`${imageClassName}${logoDarkSrc ? " [[data-theme=dark]_&]:hidden" : ""}`}
         />
@@ -48,7 +47,6 @@ function LogoBlock({
             alt={label}
             width={logoWidth ?? 56}
             height={logoHeight ?? 44}
-            unoptimized
             style={{ height: "auto", width: "auto" }}
             className={`hidden ${imageClassName} [[data-theme=dark]_&]:block`}
           />

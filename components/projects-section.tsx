@@ -27,14 +27,13 @@ export function ProjectsSection() {
       </div>
 
       <div className="space-y-px bg-[color:var(--line-strong)]">
-        {projects.map((project, index) => {
+        {projects.map((project) => {
           const CardTag = project.github ? "a" : "div";
           const cardProps = project.github
             ? {
                 href: project.github,
                 target: "_blank" as const,
                 rel: "noreferrer",
-                "aria-label": `${project.title} — view on GitHub`,
               }
             : {};
           return (
@@ -75,8 +74,6 @@ export function ProjectsSection() {
                       alt={project.image.alt}
                       width={project.image.width}
                       height={project.image.height}
-                      loading={index === 0 ? "eager" : "lazy"}
-                      fetchPriority={index === 0 ? "high" : "auto"}
                       sizes="200px"
                       className="block h-full w-full object-contain transition-transform duration-500 ease-[var(--ease-out-quart)] group-hover:scale-[1.03]"
                     />

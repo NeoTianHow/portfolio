@@ -37,7 +37,7 @@ function SkillIcon({ skill }: { skill: string }) {
   }
 
   const iconUrl = skillIconUrls[skill];
-  const shouldInvertInDark = ["Flask", "Kafka", "Next.js", "Vercel"].includes(skill);
+  const shouldInvertInDark = ["Flask", "Kafka", "Next.js"].includes(skill);
 
   if (!iconUrl) {
     return (
