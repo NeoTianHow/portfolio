@@ -85,14 +85,14 @@ function ExperienceRow({ experience }: { experience: Experience }) {
               </span>
             )}
           </div>
-          <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-sm">
-            <p className="font-bold text-[color:var(--second)]">{experience.role}</p>
-            <span className="select-none text-[color:var(--quiet)]">·</span>
-            <p className="font-medium text-[color:var(--muted)]">
+          <div className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-0.5 text-sm">
+            <p className="min-w-0 font-bold text-[color:var(--second)]">{experience.role}</p>
+            <span className="inline-flex shrink-0 items-baseline gap-2 whitespace-nowrap font-medium text-[color:var(--muted)]">
+              <span className="hidden select-none text-[color:var(--quiet)] sm:inline">·</span>
               {experience.status === "Current"
                 ? `${experience.period} – Present`
                 : experience.period}
-            </p>
+            </span>
           </div>
         </div>
       </div>
@@ -115,10 +115,43 @@ function ExperienceRow({ experience }: { experience: Experience }) {
   );
 }
 
+function formatQualification(qualification: string) {
+  const keptTogether = " with Merit";
+
+  if (!qualification.endsWith(keptTogether)) {
+    return qualification;
+  }
+
+  return (
+    <>
+      {qualification.slice(0, -keptTogether.length)}{" "}
+      <span className="whitespace-nowrap">with Merit</span>
+    </>
+  );
+}
+
+function formatSchoolName(school: string) {
+  const keptTogether = "University of Glasgow";
+
+  if (!school.includes(keptTogether)) {
+    return school;
+  }
+
+  const [prefix] = school.split(` · ${keptTogether}`);
+
+  return (
+    <>
+      {prefix}
+      <span className="hidden whitespace-nowrap sm:inline"> · </span>
+      <span className="block whitespace-nowrap sm:inline">{keptTogether}</span>
+    </>
+  );
+}
+
 function EducationRow({ entry }: { entry: Education }) {
   return (
     <article className="bg-[color:var(--panel-soft)] p-5 sm:p-6">
-      <div className="flex items-start gap-4">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-4">
         <LogoBlock
           logo={entry.logo}
           logoDarkSrc={entry.logoDarkSrc}
@@ -130,8 +163,8 @@ function EducationRow({ entry }: { entry: Education }) {
         />
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
-            <h3 className="text-[22px] font-black leading-tight tracking-[-0.03em] text-[color:var(--text)]">
-              {entry.school}
+            <h3 className="basis-full text-[19px] font-black leading-[1.12] tracking-[-0.03em] text-[color:var(--text)] sm:basis-auto sm:text-[22px] sm:leading-tight">
+              {formatSchoolName(entry.school)}
             </h3>
             {entry.badge && (
               <span className="inline-flex items-center rounded-full bg-[color:var(--accent-soft)] px-2 py-0.5 text-[11px] font-bold tracking-wide text-[color:var(--accent-strong)]">
@@ -139,10 +172,14 @@ function EducationRow({ entry }: { entry: Education }) {
               </span>
             )}
           </div>
-          <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-sm">
-            <p className="font-bold text-[color:var(--second)]">{entry.qualification}</p>
-            <span className="select-none text-[color:var(--quiet)]">·</span>
-            <p className="font-medium text-[color:var(--muted)]">{entry.period}</p>
+          <div className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-0.5 text-sm">
+            <p className="min-w-0 font-bold text-[color:var(--second)]">
+              {formatQualification(entry.qualification)}
+            </p>
+            <span className="inline-flex shrink-0 items-baseline gap-2 whitespace-nowrap font-medium text-[color:var(--muted)]">
+              <span className="hidden select-none text-[color:var(--quiet)] sm:inline">·</span>
+              {entry.period}
+            </span>
           </div>
         </div>
       </div>

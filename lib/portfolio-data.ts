@@ -120,9 +120,9 @@ export const education: Education[] = [
     detail:
       "Joint honours degree covering data structures and algorithms, distributed and cloud computing, machine learning, and professional software development.",
     honors: [
-      { title: "The Ngee Ann Kongsi Scholarship", kind: "Merit-based" },
-      { title: "SIT Hackrift 2023", kind: "Hackathon participant" },
-      { title: "SIT Hackrift 2022", kind: "Hackathon participant" },
+      { title: "The Ngee Ann Kongsi Scholarship" },
+      { title: "SIT Hackrift 2023 Participant" },
+      { title: "SIT Hackrift 2022 Participant" },
     ],
   },
   {
@@ -138,9 +138,9 @@ export const education: Education[] = [
     detail:
       "Foundation in software development, databases, and web technologies, including a final-year e-commerce build for KidZania Singapore as frontend lead.",
     honors: [
-      { title: "School of Computing Director's Roll", kind: "Academic honor" },
-      { title: "Edusave Skills Award", kind: "Technical achievement" },
-      { title: "Student Facilitator, SEED SIG", kind: "Software Development" },
+      { title: "School of Computing Director's Roll" },
+      { title: "Edusave Skills Award" },
+      { title: "Student Facilitator, SEED SIG" },
     ],
   },
 ];
