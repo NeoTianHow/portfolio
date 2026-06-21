@@ -3,6 +3,10 @@
 A personal portfolio website showcasing my experience, projects, and technical skills. Built with Next.js App Router, React,
 TypeScript, Tailwind CSS, and `next/font`.
 
+**Live site:** [neotianhow.com](https://neotianhow.com)
+
+![Neo Tian How portfolio homepage](public/portfolio-screenshot.png)
+
 ## Stack
 
 - Next.js 16 with Turbopack
