@@ -9,7 +9,7 @@ import { ArrowRightIcon, MonogramMark } from "@/components/icons";
 const navLinks = [
   { label: "home", href: "/#home" },
   { label: "projects", href: "/#projects" },
-  { label: "contact", href: `mailto:${profile.email}` },
+  { label: "contact", href: "/#contact" },
 ];
 
 export function SiteHeader() {
@@ -61,17 +61,11 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm font-bold text-[color:var(--muted)] md:flex">
-          {navLinks.map((link) =>
-            link.href.startsWith("mailto:") ? (
-              <a key={link.label} href={link.href} className="nav-link inline-flex min-h-11 items-center px-1.5 transition-colors duration-200 hover:text-[color:var(--accent)]">
-                {link.label}
-              </a>
-            ) : (
-              <Link key={link.label} href={link.href} className="nav-link inline-flex min-h-11 items-center px-1.5 transition-colors duration-200 hover:text-[color:var(--accent)]">
-                {link.label}
-              </Link>
-            )
-          )}
+          {navLinks.map((link) => (
+            <Link key={link.label} href={link.href} className="nav-link inline-flex min-h-11 items-center px-1.5 transition-colors duration-200 hover:text-[color:var(--accent)]">
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
         <div className="hidden md:block">
@@ -119,19 +113,12 @@ export function SiteHeader() {
         <div className="overflow-hidden">
         <div className="border-t border-[color:var(--line)] py-2">
           <nav className="grid text-base font-black tracking-[-0.01em] text-[color:var(--soft-text)]">
-            {navLinks.map((link) =>
-              link.href.startsWith("mailto:") ? (
-                <a key={link.label} href={link.href} onClick={() => setOpen(false)} className="group flex min-h-12 items-center justify-between border-b border-[color:var(--line)] px-1 transition-colors duration-200 hover:text-[color:var(--text)] focus-visible:text-[color:var(--text)]">
-                  <span>{link.label}</span>
-                  <ArrowRightIcon className="size-4 text-[color:var(--accent)] opacity-75 transition-transform duration-200 ease-[var(--ease-out-quart)] group-hover:translate-x-1" />
-                </a>
-              ) : (
-                <Link key={link.label} href={link.href} onClick={() => setOpen(false)} className="group flex min-h-12 items-center justify-between border-b border-[color:var(--line)] px-1 transition-colors duration-200 hover:text-[color:var(--text)] focus-visible:text-[color:var(--text)]">
-                  <span>{link.label}</span>
-                  <ArrowRightIcon className="size-4 text-[color:var(--accent)] opacity-75 transition-transform duration-200 ease-[var(--ease-out-quart)] group-hover:translate-x-1" />
-                </Link>
-              )
-            )}
+            {navLinks.map((link) => (
+              <Link key={link.label} href={link.href} onClick={() => setOpen(false)} className="group flex min-h-12 items-center justify-between border-b border-[color:var(--line)] px-1 transition-colors duration-200 hover:text-[color:var(--text)] focus-visible:text-[color:var(--text)]">
+                <span>{link.label}</span>
+                <ArrowRightIcon className="size-4 text-[color:var(--accent)] opacity-75 transition-transform duration-200 ease-[var(--ease-out-quart)] group-hover:translate-x-1" />
+              </Link>
+            ))}
           </nav>
           <div className="flex min-h-12 items-center justify-between px-1 pt-2 text-sm font-bold text-[color:var(--muted)]">
             <span>Theme</span>

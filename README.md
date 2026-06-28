@@ -17,8 +17,29 @@ TypeScript, Tailwind CSS, and `next/font`.
 
 ## Requirements
 
-- Node.js `>=20.9.0`
+- Node.js `>=20.19.0`
 - npm 10+
+
+## Contact Form Email
+
+The contact form sends mail through Resend from `contact@mail.neotianhow.com`.
+Set these environment variables in Vercel and redeploy after saving them:
+
+```bash
+RESEND_API_KEY=
+CONTACT_TO_EMAIL=tianhow1234@hotmail.com
+CONTACT_FROM_EMAIL="Neo Tian How Portfolio <contact@mail.neotianhow.com>"
+```
+
+In Resend, verify `mail.neotianhow.com`, add the generated SPF/DKIM DNS
+records, then add this initial DMARC TXT record:
+
+```text
+_dmarc.mail.neotianhow.com TXT "v=DMARC1; p=none;"
+```
+
+After successful test delivery, confirm `spf=pass`, `dkim=pass`, and
+`dmarc=pass` in the message headers before changing DMARC to `p=quarantine`.
 
 ## Scripts
 

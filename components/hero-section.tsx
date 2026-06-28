@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
+import { SectionLink } from "@/components/section-link";
 import { ArrowRightIcon, MailIcon } from "@/components/icons";
 import { profile } from "@/lib/portfolio-data";
 
@@ -47,13 +48,13 @@ export function HeroSection() {
               Download resume
               <ArrowRightIcon className="size-4 transition-transform duration-200 ease-[var(--ease-out-quart)] group-hover:translate-x-1" />
             </a>
-            <a
-              href={`mailto:${profile.email}`}
+            <SectionLink
+              href="/#contact"
               className="group inline-flex h-12 items-center justify-center gap-3 border border-[color:var(--line-strong)] bg-[color:var(--panel-soft)] px-5 text-sm font-semibold text-[color:var(--text)] transition-[color,border-color,background-color,transform] duration-150 ease-[var(--ease-out-quart)] hover:border-[color:var(--accent)] hover:bg-[color:var(--panel-strong)] hover:text-[color:var(--accent)] active:scale-[0.97] sm:min-w-36"
             >
               Contact me
               <MailIcon />
-            </a>
+            </SectionLink>
           </div>
         </div>
 

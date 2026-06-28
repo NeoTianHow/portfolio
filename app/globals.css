@@ -19,6 +19,8 @@
   --accent-strong: #004e56;
   --accent-ink: #f7f8f5;
   --accent-soft: #dcecee;
+  --danger: #b91c1c;
+  --danger-border: #dc2626;
   --second: #52666b;
   --header: rgba(247, 248, 245, 0.9);
   --brand-redis: #dc382d;
@@ -47,6 +49,8 @@
   --accent-strong: #8fdee4;
   --accent-ink: #101315;
   --accent-soft: rgba(98, 200, 208, 0.14);
+  --danger: #ff8a8a;
+  --danger-border: #ff6b6b;
   --second: #b4c8ca;
   --header: rgba(16, 19, 21, 0.9);
   --brand-redis: #dc382d;
